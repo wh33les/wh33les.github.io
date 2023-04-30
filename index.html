@@ -1,7 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Ashley K. Wheeler personal website </title> 
+	<title>Home | Ashley K. Wheeler</title> 
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!--Used to recycle code-->
+	<script>
+		$(function(){
+			$('#lastmodified').load('../lastmodified.html');
+		});
+	</script> <!--Calls the last modified code-->	
 </head>
 
 <body>
-<p> This is my website. </p>
+	<div id="header">
+		<h1> Ashley K. Wheeler </h1>
+		<hr>
+		<div class="buttons">| <a href="Coding/coding.html">Coding</a></div>
+		<div class="buttons">| <a href="../Academia/academia.html">Academia</a></div>
+		<div class="buttons">| <a href="Links/links.html">Links</a></div>
+	</div>
+	<div id="aboutme">	
+		<br/>
+		<table>
+			<tr>
+			<td width=35%>
+				<figure>
+					<img src="centralcasting.jpg" width=100% alt="Central Casting photo">
+					<figcaption><a href="https://www.centralcasting.com/ga/" target="_blank">Central Casting</a> photo, Jun 2022.</figcaption>
+				</figure>	
+			</td>
+			<td valign=top style="padding-left:30px">
+				<p style="margin-top:0px">Welcome to my website!</p>
+				<h2>About me</h2>
+				<p>I am a mathematician at Georgia Tech.  I enjoy knitting and sewing, rollerskating, learning to play bridge, and going to breweries.  I also enjoy working as a background actor in movies and TV shows that are filmed in the Atlanta metropolitan area.</p>
+				<p>I am originally from Colorado Springs, but I grew up in a military family and we moved a lot.  Growing up I lived in Colorado, Tennessee, Kentucky, Florida, Germany, and Kansas.  As an adult I have moved around a lot, too -- in fact, this is why I created this website!  Every time I leave a job, my professional website gets deleted.  I wanted to have a permanent hub for all of my materials.</p>
+				<p>For now, <a href="https://wheeler.math.gatech.edu" target="_blank">here</a> is my professional website.  My contract is ending this year (2023), so it might only be available for a limited time.</p>
+				<p>On that note, I'm on the market for a new job!  <a href="resume2023.pdf" target="_blank"><b>Here</a> is my resum&eacute;.</b></p>
+			</td></tr>
+		</table>	
+	</div>	
+	<div id = "lastmodified"></div>
 </body>
+</html>

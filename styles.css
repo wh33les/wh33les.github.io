@@ -1,0 +1,27 @@
+/* Styles for the pages in my website */
+body {
+	background-color:#000000;
+	font-family:Georgia;
+	opacity:0.9;
+}
+h1,h2,h3,h4 {font-family:Helvetica}
+:link { text-decoration:none; color:#3399FF; } /* for unvisited links */
+:visited { text-decoration:none; color:#996699; } /* for visited links */
+a:hover { text-decoration:underline; color:blue; } /* when mouse is over link */ 
+div {
+	background-color:#ffffff;
+	color:#000000;
+	width:800px; 
+	margin:auto;
+	padding:18px;
+	/*padding-top:0px; */ 
+	opacity:0.9;
+	/*border:2px solid #BADA55*/ /* bad ass border, for debugging */
+}
+.buttons {
+	width:160px;
+	float:left;
+	padding:0;
+}
+figure { margin:0; }	
+li p { margin-top:5px; }	
