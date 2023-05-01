@@ -7,9 +7,9 @@ $(function(){
 }); /* Calls the last modified code */
 function toggleShowHide(elementId) {
 	var element = document.getElementById(elementId);
-	if (element.style.display == "inline") {
+	if (element.style.display == "block") {
 		element.style.display = "none";
 	} else {
-		element.style.display = "inline";
+		element.style.display = "block";
 	}
 } /* Toggles hidden text.  Code modified from https://www.toptip.ca/2009/09/showhide-text-on-web-page.html. */

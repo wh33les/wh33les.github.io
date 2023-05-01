@@ -4,7 +4,7 @@
 	<title>Academia | Ashley K. Wheeler</title>
 	<link rel="stylesheet" href="../styles.css"> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- Used to recycle code -->
-	<script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript used -->
+	<script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript from a file -->
 	<script type="text/x-mathjax-config">
          MathJax.Hub.Config({
            tex2jax: {
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div>
-		<h3 onClick="toggleShowHide('teaching')"><a href="#teaching">Teaching</a></h3>
+		<h3><a href="#" onClick="toggleShowHide('teaching'); return false;">Teaching</a></h3>
 		<hr>
 		<div id="teaching" class="hidden">
 			<p>Over the past 9 years, plus the time when I was in grad school, I have taught calc I-III, differential equations, survey of calculus (light calculus course at Arkansas), discrete math, group theory, ring theory, linear algebra with differential equations (JMU), intro and intermediate linear algebra, and commutative algebra (grad level).  I also taught a GRE prep course for the quantitative reasoning portion of the exam the summer after I graduated college.</p>
@@ -40,7 +40,7 @@
 		</div>	
 	</div>
 	<div>
-		<h3><a href="#research" onClick="toggleShowHide('research')">Research</a></h3>
+		<h3><a href="#" onClick="toggleShowHide('research'); return false;">Research</a></h3>
 		<hr>
 		<div id="research" class="hidden">
 			<p>My research area is in commutative algebra, the study of solutions to polynomial systems of equations.  Commutative algebra can be thought of as a generalization to <i>linear</i> algebra, the study of solutions to linear systems of equations.  A system of equations is <b>linear</b> means the variables appear with numerical coefficients only, they don't have powers on them, they are not multiplied together, and they are not part of a function (e.g., $\sin(x)$).  For example:

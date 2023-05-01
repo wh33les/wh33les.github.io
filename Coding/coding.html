@@ -3,25 +3,80 @@
 <head>
 	<title>Coding | Ashley K. Wheeler</title>
 	<link rel="stylesheet" href="../styles.css"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!--Used to recycle code-->
-	<script>
-		$(function(){
-			$('#header').load('../pagesheader.html');
-		});
-	</script> <!--Calls the header code-->
-	<script>
-		$(function(){
-			$('#lastmodified').load('../lastmodified.html');
-		});
-	</script> <!--Calls the last modified code-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- Used to recycle code -->
+	<script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript from a file -->
+	<script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+           tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             processEscapes: true
+           }
+         });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> <!-- Render math formulas -->	
 </head>
 
 <body>
 	<div id="header"></div>
 	<div>
 		<h2>Coding</h2>
-		<!--<p>I've always liked coding, but I've never really had the chance to proactively learn languages.  Of course, as a mathematician I've known how to use LaTeX since I was an undergrad, and since grad school I have used Macaulay2 (M2) in my research.  But I've never made packages or templates with LaTeX, and I've only ever written small scripts in M2.</p>-->
-		<p><i>-- Under construction --</i> </p>
+		<p>This page just gives an overview of the languages I've used, and my history with learning them.  You can find more information on my <a href="https://wh33les.github.io/Blog/" target="_blank">blog</a> about learning code.</p>
+		<p>I've always liked coding, but for some reason I've never been able to become sufficiently proficient in any language.  Of course, as a mathematician I've known how to use <a href="https://www.latex-project.org/" target="_blank">LaTeX</a> since I was an undergrad, and since grad school I have used <a href="http://www2.macaulay2.com/Macaulay2/" target="_blank">Macaulay2</a> in my research.  But I've never made packages or templates with LaTeX, and I've only ever written small scripts in M2.</p>
+		<p>Recently I've started to pick up some code, though, namely Python and JavaScript, through the <a href="https://www.erdosinstitute.org/" target="_blank">Erd&#246;s Institute</a>'s data science boot camp and data visualization minicourse.  You can find the code I've written for their projects and problem sets on <a href="https://github.com/wh33les" target="_blank">my Github account</a>.</p>
+		<p>I actually started the blog in summer of 2017 when my contract at University of Arkansas ended and I was trying to learn basic computer science (algorithms, data structures) and implement what I was learning in C.  However, I lost my momentum when I got hired at James Madison University.  I picked it back up this past spring (2023) and started writing about what I've been learning from Erd&#246;s Institute.  I even have a few posts about machine learning algorithms!</p>
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('latex'); return false;">LaTeX</a></h3>
+		<hr>
+		<div id="latex" class="hidden">
+			<p>LaTeX is a typesetting language used to render math equations.  It is the standard for formatting math papers for publication (<a href="https://www.ams.org/home/page" target="_blank">AMS</a> has several packages).</p>
+			<p>I first learned LaTeX in my junior or senior year of undergrad.  To use it, I downloaded an entire suite with <a href="https://miktex.org/" target="_blank">MikTeX</a>, which is the distribution, its package manager, and a program called <a href="https://www.texniccenter.org/" target="_blank">TeXnicCenter</a>, a text editor with a compiler and a preview of the pdf rendered.  What I liked about TeXnicCenter was that it had buttons for common LaTeX commands, and this is how I first learned them.</p>
+			<p>However, as I got more familiar with LaTeX, I found that I no longer needed TeXnicCenter.  At one point during grad school, I found a way to write a script that would let me compile directly from <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a> (with MikTeX installed), then render the pdf in the lightweight pdf viewer, <a href="https://www.sumatrapdfreader.org/free-pdf-reader" target="_blank">Sumatra PDF</a>.  I could try to remember how I did it, I still have the scripts I used, but for now I just use the suite with <a href="https://www.tug.org/texworks/" target="_blank">TeXworks</a>.</p>
+			<p>LaTeX has a few notable incarnations.  An earlier version exists, called TeX back when it was first implemented, and called PlainTeX now.  Until recent years, my Ph. D. advisor wrote all of his lecture notes using PlainTeX, so when I was giving talks at the student seminars in grad school, I wanted to make my lecture notes look like his, so I learned it.  <a href="Proj3D.pdf" target="_blank">Here</a> is an example of a talk I wrote using PlainTeX, and here is <a href="Proj3d.tex" target="_blank">its source</a>.</p>
+			<p>LaTeX also has the capability to make posters and slide shows.  </p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('m2'); return false;">Macaulay2</a></h3>
+		<hr>
+		<div id="m2" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('c'); return false;">C</a></h3>
+		<hr>
+		<div id="c" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('python'); return false;">Python</a></h3>
+		<hr>
+		<div id="python" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('htmlcss'); return false;">HTML/CSS</a></h3>
+		<hr>
+		<div id="htmlcss" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('markdown'); return false;">Markdown</a></h3>
+		<hr>
+		<div id="markdown" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
+	</div>
+	<div>
+		<h3><a href="#" onClick="toggleShowHide('javascript'); return false;">JavaScript</a></h3>
+		<hr>
+		<div id="javascript" class="hidden">
+			<p><i>-- Under construction --</i></p>
+		</div>	
 	</div>
 	<div id ="lastmodified"></div>
 </body>

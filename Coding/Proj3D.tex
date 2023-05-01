@@ -1,0 +1,1000 @@
+\input amstex
+
+% to keep URLs from badboxing:
+\input miniltx
+\expandafter\def\expandafter\+\expandafter{\+}
+\input url.sty
+\input{tikz.tex}
+\usetikzlibrary{calc,intersections}
+
+\magnification=\magstep1 
+\documentstyle{amsppt}
+\hsize=6.5truein
+\vsize=8.9truein
+\hoffset=.55 truein
+\voffset=.7 truein
+\loadeurm
+\loadbold
+\NoBlackBoxes
+\font\twbf=cmbx10 scaled\magstep2
+\font\chbf=cmbx10 scaled\magstep1
+\font\hdbf=cmbx10
+\font\mb=cmmib10                      %%% bold math italic
+\font\smrm=cmr7  
+
+%%% Macros %%%
+
+% Greek Letter Shortcuts %
+\define\gka{\alpha}
+\define\gkb{\beta}
+\define\gkc{\gamma}
+\define\gkd{\delta}
+\define\gke{\epsilon}
+\define\gkf{\varphi} % curly phi
+\define\gkh{\eta}
+\define\gki{\iota}
+\define\gkk{\kappa}
+\define\gkl{\lambda}
+\define\gkm{\mu}
+\define\gkn{\nu}
+\define\gkp{\pi}
+\define\gkr{\rho}
+\define\gks{\sigma}
+\define\gkt{\tau}
+\define\gkth{\theta}
+\define\gkw{\omega}
+\define\gkz{\zeta}
+
+% Blackboard Bolds %
+\define\A{{\Bbb A}} % affine space
+\define\C{{\Bbb C}} % complex numbers
+\define\N{{\Bbb N}} % natural numbers
+\redefine\P{{\Bbb P}} % projective space
+\define\Q{{\Bbb Q}} % rational numbers
+\define\R{{\Bbb R}} % real numbers
+\define\Z{{\Bbb Z}} % integers
+
+% Non-Italic Operators %
+\define\Ann{\hbox{\rm Ann}} % annihilator
+\define\Ass{\hbox{\rm Ass}} % associated primes
+\redefine\char{\hbox{\rm char}} % characteristic
+\define\codim{\hbox{\rm codim}} % codimension
+\define\Coker{\hbox{\rm Coker}} % cokernel
+\define\depth{\hbox{\rm depth}} % depth
+\define\dirlim{\underarrow{\hbox{\rm lim}}} % direct limit
+\define\Ext{\hbox{\rm Ext}} % Ext
+\define\gcf{\hbox{\rm gcf}} % greatest common factor
+\define\gr{\hbox{\rm gr}} % associated graded ring (algebra?)
+\define\Grass{\hbox{\rm Grass}} % Grassmannian
+\define\hd{\hbox{\rm hd}} % homological dimension
+\define\Hom{\hbox{\rm Hom}} % Hom
+\define\img{\hbox{\rm img}} % image
+\define\invlim{\underleftarrow{\hbox{\rm lim}}} % inverse limit
+\define\Ker{\hbox{\rm Ker}} % kernel
+\define\rad{\hbox{\rm rad}} % radical
+\define\rank{\hbox{\rm rank}} % rank
+\define\Soc{\hbox{\rm Soc}} % socle
+\define\Spec{\hbox{\rm Spec}} % prime spectrum
+\define\Supp{\hbox{\rm Supp}} % support
+\define\Sym{\hbox{\rm Sym}} % symmetric algebra
+\redefine\Supp{\hbox{\rm Supp}} % support
+\define\Tor{\hbox{\rm Tor}} % Tor
+\define\wgdim{\hbox{\rm w.gl.dim}} % weak global dimension
+
+% Text Shortcuts %
+\define\chp{{characteristic $p$}}
+\define\chz{{characteristic zero}}
+\define\CM{{Cohen-Macaulay}}
+\define\Cor{{Corollary}}
+\define\Def{{Definition}}
+\define\dvr{{discrete valuation ring}}
+\define\Exe{{Exercise}}
+\define\fg{{finitely generated}}
+\redefine\iff{{if and only if}}
+\define\Lem{{Lemma}}
+\define\Not{{Notation}}
+\define\nz{{non-zero}}
+\define\pid{{principal ideal domain}}
+\define\pf{\demo{Proof}}
+\define\Prop{{Proposition}}
+\redefine\qed{$\square$\enddemo}
+\define\Rmk{{Remark}}
+\define\Sol{{Solution}}
+\define\sop{{system of parameters}}
+\define\Thm{{Theorem}}
+\define\zd{{zero divisor}}
+\define\zds{{zero divisors}}
+
+% Symbol Shortcuts %
+\define\1{^{-1}} % inverse
+\define\8{^{\infty}} % infinite dimension  
+\define\a{\mb a} % vector a
+\redefine\bar#1{\overline{#1}} % longer bar
+\define\cnt{\supseteq} % contains
+\define\coh{^{\bullet}} % cohomology
+\define\du{^{\vee}} % dual
+\define\dud{^{\vee\vee}} % double dual 
+\define\ghlex{>_{\text{hlex}}} % hlex greater than 
+\define\glex{>_{\text{lex}}} % lex greater than 
+\define\geqrev{\geq_{\text{rev}}} % revlex greater than or equal to
+\define\grev{>_{\text{rev}}} % revlex greater than
+\define\ho{_{\bullet}} % homology
+\define\inc{\subseteq} % inclusion
+\define\inj{\hookrightarrow} % injects into
+\predefine\iso{\cong} % isomorphic to
+\define\leqrev{\leq_{\text{rev}}} % revlex less than or equal to
+\define\lhlex{<_{\text{hlex}}} % hlex less than 
+\define\llex{<_{\text{lex}}} % lex less than
+%\define\ov#1{\overset{#1}{\to}} % overset
+\define\lrev{<_{\text{rev}}} % revlex less than
+\define\st{\,\left|\right.\,} % such that 
+\define\surj{\twoheadrightarrow} % surjects onto
+\define\tns{\otimes} % tensor product
+\define\un#1{\underline{#1}} % underline
+\define\({\left(} % use these for nested parentheses
+\define\){\right)}
+\define\<{\langle}
+\define\>{\rangle}
+\define\[{\lbrack}
+\define\]{\rbrack}
+
+% Dots %
+\define\capdts{\cap\,\cdots\,\cap} % intersections
+\define\cntdts{\supseteq\,\cdots\,\supseteq} % containment sequence
+\define\cupdts{\cup\,\cdots\,\cup} % unions
+\define\incdts{\subseteq\,\cdots\,\subseteq} % inclusion sequence
+\define\plsdts{+\,\cdots\,+} % sum
+\define\seq{,\,\dots\,,} % sequence
+
+% Other Macros %
+\define\part#1{\item\item{(#1)}} % for itemized lists
+\define\hai{\hangindent 20pt} % hanging indent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                       %%% The document starts here (WYSIWYG). %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\NoPageNumbers
+%\headline{\ifnum\pageno=1{}\else\centerline{\rm LOCAL COHOMOLOGY AND $D$-MODULES}\fi}
+%\rightheadline{\ifnum\pageno=1{}\else\centerline{\rm LOCAL COHOMOLOGY AND $D$-MODULES}\fi}
+\nologo         
+\parindent = 20 pt
+\centerline{\bf Typical Theorems in Solid Projective Geometry} \hfill\break
+\centerline{(talk given at the University of Michigan Student Geometry/Topology Seminar)}\hfill
+\centerline{18 Jan, 2011} \hfill
+\centerline{by Ashley K. Wheeler} \hfill
+%\centerline{\it Last modified: } \hfill
+
+\bigskip
+
+One of the most elegant properties of projective geometry is the {\bf principle of duality}, which asserts (in a projective plane) that every definition remains significant, and every theorem remains true, when we consistently interchange the words point and line (and consequently interchange lie on and pass through, join and intersection, collinear and concurrent, etc.).
+
+Axiom 14.12.  Any two lines are incident with at least one point.
+
+\proclaim{\Thm} Any two distinct lines are incident with just one points. \endproclaim
+
+Axiom 14.13.  The exist four points of which no three are collinear.
+
+Axiom 14.14 (Fano's axiom) The three diagonal points of a complete quadrangle are never collinear.
+
+Axiom 14.15. (Pappus's theorem) If the six vertices of a hexagon lie alternately on two lines, the three points of intersection of pairs of opposite sides are collinear.
+
+\medskip
+\tikzpicture
+\path (-6.5,0) -- (5,0); % for centering
+\coordinate [label=above left:{$A_1$}] (A1) at (-5,2);
+\coordinate [label=below left:{$B_1$}] (B1) at ($(A1)+1.3*(2,-.1)$);
+\coordinate [label=below right:{$C_1$}] (C1) at ($(B1)+2*(2,-.1)$);
+\coordinate [label=below:{$A_2$}] (A2) at (-2,-2);
+\coordinate [label=below:{$B_2$}] (B2) at ($(A2)+.5*(4,3)$);
+\coordinate [label=above right:{$C_2$}] (C2) at ($(B2)+(4,3)$);
+\draw [thick] (A1) -- (A2) -- (B1) -- (B2) -- (C1) -- (C2) -- (A1);
+
+% intersections
+\path [name path=A1B2] (A1) -- (B2);
+\path [name path=A2B1] (A2) -- ($(A2)!1.5!(B1)$);
+\fill [red,name intersections={of=A1B2 and A2B1,by={[label=$C_3$]C3}}] (C3) circle (2pt);
+\path [name path=B1C2] (B1) -- ($(B1)!1.5!(C2)$);
+\path [name path=B2C1] (B2) -- ($(B2)!1.5!(C1)$);
+\fill [red,name intersections={of=B1C2 and B2C1,by={[label=above left:$A_3$]A3}}] (A3) circle (2pt);
+\path [name path=A1C2] (A1) -- (C2);
+\path [name path=A2C1] (A2) -- ($(A2)!1.5!(C1)$);
+\fill [red,name intersections={of=A1C2 and A2C1,by={[label=$B_3$]B3}}] (B3) circle (2pt);
+
+% dotted lines
+\draw [blue,dashed] (A1) -- (C1) (A2) -- (C2);
+\draw [green,dashed] (A1) -- (B2) (B1) -- (A2) (B1) -- (C2) (B2) -- (A3) (A1) -- (C2) (A2) -- (B3);
+\draw [red,dashed] (C3) -- (B3);
+\endtikzpicture
+\medskip
+
+Let $A_1A_2B_1B_2C_1C_2$ denote the hexagon from Pappus's theorem.  The points of intersection of pairs of opposite sides are $A_3=B_1C_2\cdot B_2C_1, B_3=C_1A_2\cdot C_2A_1, C_3=A_1B_2\cdot A_2B_1$.  The axiom asserts that these three points are collinear.  Another way to express the same result is to arrange the 9 points in the form of a matrix 
+$$\Vmatrix
+A_1 & B_1 & C_1 \\
+A_2 & B_2 & C_2 \\
+A_3 & B_3 & C_3
+\endVmatrix.$$
+In trying to compute a ``determinant" of this matrix we get a sum of six terms of the form $A_iB_jC_k$.  This matrix notation will indicate for each $i\neq j\neq k$ the points $A_i,B_j,C_k$ are collinear, as well as points in the same row.  
+
+Two triangles, with their vertices named in a particular order, are said to be {\bf perspective from a point} (or briefly ``perspective") means their three pairs of corresponding vertices are joined by concurrent lines.  Dually, two triangles are said to be {\bf perspective from a line} means their three pairs of corresponding sides meet in collinear points.
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [thick,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\node [thick,label=below:{$g$}] (g) at (-6,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate (S) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (P); 
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [name intersections={of=PS and g, by=A}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [name intersections={of=QS and g, by=B}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [name intersections={of=RS and g, by=C}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,red,name intersections={of=RQ and g, by=D}] (D) -- (R);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,red,name intersections={of=RP and g, by=E}] (E) -- (R);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,red,name intersections={of=QP and g, by=F}] (F) -- (Q);
+
+% the other plane's quadrangle
+\coordinate [label={$R'$}] (R') at (-.4,-.8);
+\coordinate (S') at ($(C)!2.5!(R')$);
+\path (C) -- (S');
+\path [name path=S'A] (S') -- (A);
+\path [name path=ER'] (E) -- ($(E)!2!(R')$);
+\draw [name intersections={of=ER' and S'A, by=P'}] (P') -- (E);
+\coordinate [label={$P'$}] (P') at (P');
+\path [name path=DR'] (D) -- ($(D)!1.5!(R')$);
+\path [name path=BS'] (B) -- (S');
+\path [name intersections={of=DR' and BS', by=Q'}] (Q') -- (D);
+\coordinate [label={$Q'$}] (Q') at (Q');
+\path (P') -- (F);
+\path [draw,thick] (P') -- (Q') -- (R') -- (P'); 
+
+% perspectiveness
+\path [draw,red] (F) circle (2pt) -- (P');
+\path [draw,red] (D) circle (2pt) -- (Q');
+\path [draw,red] (E) circle (2pt) -- (P');
+\path [draw,green,dashed,name path=PP'] (P) to (P');
+\path [draw,green,dashed,name path=QQ'] (Q) to (Q');
+\path [draw,green,dashed] (R) to (R');
+\fill [name intersections={of=PP' and QQ',by={[label=left:$O$]O}}] (O) circle (2pt);
+\endtikzpicture\hfill
+\medskip
+
+\proclaim{\Thm (Desargues's Theorem)} If two triangles are perspective from a point, then they are perspective from a line, and conversely. \endproclaim
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [thick,name path=g] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate (S) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (P); 
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [name intersections={of=PS and g, by=A}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [name intersections={of=QS and g, by=B}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2!(S) $);
+\path [name intersections={of=RS and g, by=C}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,name intersections={of=RQ and g, by={[label=$D$]D}}] (D) -- (R);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,name intersections={of=RP and g, by={[label=above left:$E$]E}}] (E) -- (R);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,name intersections={of=QP and g, by={[label=$F$]F}}] (F) -- (Q);
+
+% the other plane's quadrangle
+\coordinate [label={$R'$}] (R') at (-.4,-.8);
+\coordinate (S') at ($(C)!2.5!(R')$);
+\path (C) -- (S');
+\path [name path=S'A] (S') -- (A);
+\path [name path=ER'] (E) -- ($(E)!2!(R')$);
+\draw [name intersections={of=ER' and S'A, by=P'}] (P') -- (E);
+\coordinate [label={$P'$}] (P') at (P');
+\path [name path=DR'] (D) -- ($(D)!1.5!(R')$);
+\path [name path=BS'] (B) -- (S');
+\path [name intersections={of=DR' and BS', by=Q'}] (Q') -- (D);
+\coordinate [label={$Q'$}] (Q') at (Q');
+\path (P') -- (F);
+\path [draw,thick] (P') -- (Q') -- (R') -- (P'); 
+
+% perspectiveness
+\draw (F) circle (2pt) -- (P');
+\draw (D) circle (2pt) -- (Q');
+\draw (E) circle (2pt) -- (P');
+\draw [green,dashed,name path=PP'] (P) to (P');
+\draw [blue,dashed,name path=QQ'] (Q) to (Q');
+\draw [dashed] (R) to (R');
+\fill [name intersections={of=PP' and QQ',by={[label=left:$O$]O}}] (O) circle (2pt);
+
+% Desargues proof
+\path [name path=PR] (R) -- ($(R)!1.5!(E)$);
+\path [name path=Q'R'] (R') -- ($(R')!2!(Q')$);
+\draw [fill,name intersections={of=PR and Q'R',by={[label=below:$S$]S}}] (S) circle (2pt);
+\path [name path=OS] (S) -- ($(S)!2.5!(O)$);
+\path [name path=PQ'] (Q') -- ($(Q')!2!(P)$);
+\path [name path=OR] (O) -- ($(O)!1.5!(R)$);
+\fill [name intersections={of=PQ' and OR,by={[label=$T$]T}}] (T) circle (2pt);
+\path [name path=PQ] (P) -- ($(P)!1.5!(Q)$);
+\fill [name intersections={of=PQ and OS,by={[label=$U$]U}}] (U) circle (2pt);
+\path [name path=P'Q'] (P') -- ($(P')!2!(Q')$);
+\fill [name intersections={of=P'Q' and OS,by={[label=$V$]V}}] (V) circle (2pt);
+
+% collinearities
+\path [draw,blue,opacity=.5] (R) -- (S) (D) -- (T) (U) -- (S) (O) -- (T) (U) -- (P) (D) -- (R) (Q') -- (T) (D) -- (S);
+\path [draw,green,opacity=.5] (R') -- (S) (V) -- (T) (R') -- (T) (S) -- (O) (Q') -- (T) (S) -- (P) (P') -- (V) (P') -- (E); 
+\path [draw,red,opacity=.5] (Q') -- (T) (S) -- (U) (U) -- (F) (S) -- (P) (Q') -- (F) (S) -- (D) (T) -- (V) (T) -- (D);
+\draw [red] (D) -- (F);
+\endtikzpicture\hfill
+\medskip
+
+\pf Let two triangles $PQR$ and $P'Q'R'$ be perspective from $O$, and let their corresponding sides meet in points 
+$$D=QR\cdot Q'R'\qquad E=RP\cdot R'P'\qquad F=PQ\cdot P'Q.$$  
+It is enough to show $D,E,F$ are collinear.  The converse will follow from duality.  After defining four further points 
+$$\aligned
+S=PR\cdot Q'R' &\qquad T=PQ'\cdot OR \\
+U=PQ\cdot OS &\qquad V=P'Q'\cdot OS,
+\endaligned$$
+we can apply Pappus's theorem; in the ``matrix" notation we have 
+$$\Vmatrix
+O & Q & Q' \\
+P & S & R \\
+D & T & U 
+\endVmatrix, 
+\Vmatrix
+O & P & P' \\
+Q' & R' & S \\
+E & V & T  
+\endVmatrix,
+\Vmatrix
+P & Q' & T \\
+V & U & S \\
+D & E & F \\ 
+\endVmatrix.$$
+The last row of the last matrix exhibits the desired collinearity. \qed
+
+A {\bf quadrangular set} of points is the section of the six sides of a complete quadrangle by any line that does not pass through a vertex.
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [dashed,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\node [thick,label=below:{$g$}] (g) at (-6,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+\fill [red] (A) circle (2pt) (B) circle (2pt) (C) circle (2pt) (D) circle (2pt) (E) circle (2pt) (F) circle (2pt);
+\endtikzpicture
+
+\proclaim{\Thm} Each point of a quadrangular set is uniquely determined by the remaining points. \endproclaim
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [thick,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\node [thick,label=below:{$g$}] (g) at (-6,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+
+% the other plane's quadrangle
+\coordinate [label={$R'$}] (R') at (-.4,-.8);
+\coordinate [label=above right:{$S'$}] (S') at ($(C)!4!(R')$);
+\path [draw] (C) -- (S');
+\path [draw,name path=S'A] (S') -- (A);
+\path [name path=ER'] (E) -- ($(E)!3!(R')$);
+\draw [name intersections={of=ER' and S'A, by=P'}] (P') -- (E);
+\coordinate [label={$P'$}] (P') at (P');
+\path [name path=DR'] (D) -- ($(D)!2!(R')$);
+\path [draw,name path=BS'] (B) -- (S');
+\path [draw,name intersections={of=DR' and BS', by=Q'}] (Q') -- (D);
+\coordinate [label={$Q'$}] (Q') at (Q');
+\path [draw] (P') -- (F);
+\path [draw,thick] (P') -- (Q') -- (R') -- (S') (Q') -- (S') -- (P') -- (R');
+
+% perspectiveness
+\path [draw,color=blue,dashed] (P) -- (A) circle (2pt) -- (S');
+\path [draw,color=blue,dashed] (R) -- (C) circle (2pt) -- (S');
+\path [draw,color=blue,dashed] (R) -- (E) circle (2pt) -- (P');
+\path [draw,color=blue,dashed] (P) to (P');
+\path [draw,color=blue,dashed] (R) to (R');
+\path [draw,color=blue,dashed] (S) to (S');
+\path [draw,color=green,dashed] (R) -- (D) circle (2pt) -- (Q');
+\path [draw,color=green,dashed] (R) -- (C) circle (2pt) -- (S');
+\path [draw,color=green,dashed] (Q) -- (B) circle (2pt) -- (S');
+\path [draw,color=green,dashed] (Q) to (Q');
+\path [draw,color=green,dashed] (R) to (R');
+\path [draw,color=green,dashed] (S) to (S');
+\path [draw,color=red] (Q) -- (F) circle (2pt) -- (P');
+\path [draw,color=red,dashed] (R) -- (D) circle (2pt) -- (Q');
+\path [draw,color=red,dashed] (R) -- (E) circle (2pt) -- (P');
+\path [draw,color=red,dashed] (P) to (P');
+\path [draw,color=red,dashed] (Q) to (Q');
+\path [draw,color=red,dashed] (R) to (R');
+\endtikzpicture\hfill
+\medskip
+
+\pf Let $PQRS$ be a complete quadrangle.  Let $g$ denote a line passing through all six sides of $PQRS$, not containing any of the points $P,Q,R,S$.  Label the intersection points as follows:
+$$\aligned
+A=g\cdot PS &\qquad D=g\cdot QR \\
+B=g\cdot QS &\qquad E=g\cdot PR \\
+C=g\cdot RS &\qquad F=g\cdot PQ.   
+\endaligned$$
+By relabelling, it is enough to show $F$ is uniquely determined by $A,B,C,D,E$.  Let $P'Q'R'S'$ denote a second quadrangle such that its sides $Q'R',P'R',P'Q',P'S',Q'S'$ respectively pass through the points $A,B,C,D,E$.  By construction, the triangles $PRS$ and $P'R'S'$ are perspective from the line $g$.  By the converse of Desargues's theorem, $PRS$ and $P'R'S'$ are also perspective from a point, given by $PP'\cdot RR'=RR'\cdot SS'=SS'\cdot PP'$.  Similarly, perspectivity of the triangles $QRS$ and $Q'R'S'$ imply $QQ'\cdot RR'=RR'\cdot SS'=SS'\cdot QQ'$.  So in fact, $PQRS$ and $P'Q'R'S'$ are ``perspective quadrangles" from a point.  By the direct form of Desargues's theorem, the triangles $PQR$ and $P'Q'R'$ are perspective from the line $DE=g$; that is, $PQ$ and $P'Q'$ both meet $g$ in the same point $F$. \qed
+
+In the above construction, $PS$ is opposite to $RQ$, $QS$ is opposite to $PR$, and $RS$ is opposite to $PQ$.  This correspondence is reflected in the symbol $(AD)(BE)(CF)$.  In fact, if we permute $A,B,C$ and apply the same permutation to $D,E,F$ then the statement remains valid.  We can also get equivalent statements by permuting the sides of $PQRS$.  If we interchange $QS$ and $RP$ and define $A,B,C,D,E,F$ as in the theorem then we get the equivalent statement $(AD)(EB)(FC)$.
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [dashed,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\node [thick,label=below:{$g$}] (g) at (-6,0) {};
+\coordinate [label=above right:{$S$}] (S) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$R$}] (R) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$Q$}] (Q) at ($ (O) + (1,1) $);
+\coordinate [label=above left:{$P$}] (P) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (S) -- ($ (S)!5!(P) $);
+\path [draw,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!5.5!(S) $);
+\path [draw,name intersections={of=RS and g, by={[label=above:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (Q) -- ($ (Q)!4.5!(R) $);
+\path [draw,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!2.5!(P) $);
+\path [draw,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+\endtikzpicture
+
+Similarly, we can get the statements $(DA)(BE)(FC)$ and $(DA)(EB)(CF)$.  Finally, suppose we define $R'=QR\cdot SF$ and $P'=PS\cdot QC$.  
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [dashed,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\node [thick,label=below:{$g$}] (g) at (-6,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.7,-1) $);
+\path [draw,thick] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+
+% new points
+\path [draw,dashed,blue,name path=QC] (Q) -- (C);
+\path [draw,dashed,blue,name intersections={of=PS and QC, by={[label=left:$P'$]P'}}] (P') -- (E);
+\path [name path=SF] (F) to ($(S)!-.3!(F)$);
+\path [draw,dashed,blue,name intersections={of=RQ and SF, by={[label=left:$R'$]R'}}] (P') -- (R') -- (F);
+
+% hexagon
+\path [draw,green] (P) -- (R) -- (Q) -- (C) -- (F) -- (S) -- (P);
+\endtikzpicture
+
+\noindent We can apply Pappus's Theorem to the hexagon $PRQCFS$ according to the scheme 
+$$\Vmatrix
+P & F & Q \\
+C & R & S \\
+R' & P' & E
+\endVmatrix,$$
+with the conclusion that $R'P'$ passes through $E$.  Thus
+$$\aligned
+A=g\cdot P'S &\qquad D=g\cdot QR' \\
+B=g\cdot QS &\qquad E=g\cdot P'R' \\
+C=g\cdot R'S &\qquad F=g\cdot P'Q,
+\endaligned$$
+a quadrangular set induced by $(AD)(BE)(FC)$.  In other words $(AD)(BE)(CF)$ implies (AD)(BE)(FC), and we can ultimately conclude 
+\proclaim{\Thm} $(AD)(BE)(CF)$ implies $(DA)(EB)(FC)$. $\square$ \endproclaim
+
+%%%%%
+
+\bigskip
+\centerline{\bf Solid Projective Geometry}
+\bigskip
+
+The principle of duality changes in three-dimensional projective space.  Rather than between points and lines, a correspondence exists between points and planes.  Given two intersecting lines, $a$ and $b$, their intersection $a\cdot b$ is a point, and their span determines a plane $ab$.  Consequently, lines are self-dual.  
+
+Let $PQRS$ be a complete quadrangle with quadrangular set $(AD)(BE)(CF)$ on the line $g$.  In another plane containing $g$, let $P'Q'R'$ form a triangle such that $A$, $B$, and $C$ lie respectively on the lines $Q'R'$, $P'R'$, and $P'Q'$.  Let $S'$ denote the intersection of the lines $DP'$ and $EQ'$.  The result from the previous section says $(DA)(EB)(FC)$ is a quadrangular set, which then implies $S'$ lies on $FR'$.  The following results rely on this observation.  
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [opacity=.5,thick,name path=g,label=left:{$g$}] (-6,0) to (6,0);
+\node (O) at (1,3) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.6,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.3,.1) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1,1) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.7,-1) $);
+\path [draw,opacity=.5,thick] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,opacity=.5,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,opacity=.5,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,opacity=.5,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,opacity=.5,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,opacity=.5,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,opacity=.5,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+
+% the other plane's quadrangle
+\coordinate [label={$P'$}] (P') at (-.7,-.8);
+\coordinate [label=above right:{$Q'$}] (Q') at ($(C)!4!(P')$);
+\path [draw] (C) -- (Q');
+\path [draw,name path=Q'A] (Q') -- (A);
+\path [name path=BP'] (B) -- ($(B)!3!(P')$);
+\draw [name intersections={of=BP' and Q'A, by=R'}] (R') -- (B);
+\coordinate [label={$R'$}] (R') at (R');
+\path [draw,dashed,name path=DP'] (D) -- ($(D)!2!(P')$);
+\path [draw,dashed,name path=EQ'] (E) -- (Q');
+\path [name intersections={of=DP' and EQ', by=S'}] (S') -- (D);
+\coordinate [label={$S'$}] (S') at (S');
+\path [draw,red] (R') -- (F);
+\path [draw,thick] (P') -- (Q') -- (R');
+\endtikzpicture\hfill
+\medskip
+
+\proclaim{\Def} Two lines that do not intersect are said to be {\bf skew}. \endproclaim  
+
+\proclaim{\Thm (Gallucci's Theorem)} If three skew lines all meet three other skew lines, any transversal to the first set of three meets any transversal to the second set. \endproclaim
+\pf Let the two sets of lines be $PQ', P'Q, RS; PQ, P'Q', R'S$.  The picture remains consistent with the hypothesis; the points $P,A,Q'$ determine a plane containing $S$ and $R'$, by construction.  The lines $R'S$ and $PQ'$ thus meet in that plane.  Similarly, $Q,B,R'$ determine a plane in which $P'Q$ and $R'S$ intersect.  The other seven intersections $PQ'\cdot PQ,RS\cdot PQ,PQ'\cdot P'Q',RS\cdot P'Q',P'Q\cdot PQ,RS\cdot R'S,P'Q\cdot P'Q'$ are evident.
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [opacity=.5,thick,name path=g] (-6.5,0) to (5,0);
+\node (O) at (1,3) {};
+\node [label=below:{$g$}] (g) at (-7,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.7,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.2,.4) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1.5,1.5) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.8,-1) $);
+\path [draw,opacity=.5] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,opacity=.5,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,opacity=.5,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,opacity=.5,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,opacity=.5,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,opacity=.5,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,opacity=.5,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+
+% the other plane's quadrangle
+\coordinate [label=below left:{$P'$}] (P') at (-.1,-.6);
+\coordinate [label=right:{$Q'$}] (Q') at ($(C)!4!(P')$);
+\path [draw] (C) -- (Q');
+\path [draw,opacity=.5,name path=Q'A] (Q') -- (A);
+\path [name path=BP'] (B) -- ($(B)!3!(P')$);
+\draw [opacity=.5,name intersections={of=BP' and Q'A, by=R'}] (R') -- (B);
+\coordinate [label=below:{$R'$}] (R') at (R');
+\path [draw,opacity=.5,dashed,name path=DP'] (D) -- ($(D)!2!(P')$);
+\path [draw,opacity=.5,dashed,name path=EQ'] (E) -- (Q');
+\path [name intersections={of=DP' and EQ', by=S'}] (S') -- (D);
+\coordinate [label=below:{$S'$}] (S') at (S');
+\path [draw,opacity=.5] (R') -- (F);
+\path [draw,opacity=.5] (P') -- (Q') -- (R') -- (P');
+
+% Gallucci's theorem
+\draw [thick,blue] (P) -- (Q') (R) -- (S) -- (C);
+\draw [thick,blue,name path=P'Q] (P') -- (Q); 
+\draw [thick,green] (F) -- (P) -- (Q) (P') -- (Q') -- (C) (R') -- (S);
+\draw (P) circle (2pt);
+\draw (Q) circle (2pt);
+\draw (S) circle (2pt);
+\draw (C) circle (2pt);
+\draw (P') circle (2pt);
+\draw (Q') circle (2pt);
+\draw (S') circle (2pt);
+\draw [name intersections={of=RS and QP,by=x}] (x) circle (2pt);
+\path [draw,dashed,blue,name path=PQ'] (Q') to ($(Q')!2!(P)$);
+\path [draw,dashed,green,name path=R'S] (R') to ($(R')!2.5!(S)$);
+\draw [name intersections={of=PQ' and R'S,by=y}] (y) circle (2pt);
+\draw [name intersections={of=P'Q and R'S,by=z}] (z) circle (2pt);
+\endtikzpicture\hfill
+\medskip
+
+Without loss of generality we can assert the transversal to the first set of three lines passes through $R$.  The transversal from $R$ to $PQ'$ and $P'Q$ is the intersection of the planes 
+$$\aligned
+RPQ'\cdot RP'Q &= REQ'\cdot RP'D \\
+&= RS'Q'\cdot RS'D \\
+&=RS'.
+\endaligned$$
+
+\medskip
+\tikzpicture 
+% the line g and the initial quadrangle
+\draw [opacity=.5,thick,name path=g] (-6.5,0) to (5,0);
+\node (O) at (1,3) {};
+\node [label=below:{$g$}] (g) at (-7,0) {};
+\coordinate [label=above right:{$P$}] (P) at ($ (O) + (.7,-.5) $);
+\coordinate [label=above:{$Q$}] (Q) at ($ (O) + (-.2,.4) $);
+\coordinate [label=right:{$R$}] (R) at ($ (O) + (1.5,1.5) $);
+\coordinate [label=above left:{$S$}] (S) at ($ (O) + (-.8,-1) $);
+\path [draw,opacity=.5] (P) -- (Q) -- (R) -- (S) (Q) -- (S) -- (P) -- (R);
+
+% construction of the quadrangular set
+\path [name path=PS] (P) -- ($ (P)!5!(S) $);
+\path [draw,opacity=.5,name intersections={of=PS and g, by={[label=above:$A$]A}}] (A) -- (S);
+\path [name path=QS] (Q) -- ($ (Q)!3!(S) $);
+\path [draw,opacity=.5,name intersections={of=QS and g, by={[label=above left:$B$]B}}] (B) -- (S);
+\path [name path=RS] (R) -- ($ (R)!2.5!(S) $);
+\path [draw,opacity=.5,name intersections={of=RS and g, by={[label=above left:$C$]C}}] (C) -- (S);
+\path [name path=RQ] (R) -- ($ (R)!4.5!(Q) $);
+\path [draw,opacity=.5,name intersections={of=RQ and g, by={[label=above:$D$]D}}] (D) -- (Q);
+\path [name path=RP] (R) -- ($ (R)!3!(P) $);
+\path [draw,opacity=.5,name intersections={of=RP and g, by={[label=above right:$E$]E}}] (E) -- (P);
+\path [name path=QP] (Q) -- ($ (Q)!5.5!(P) $);
+\path [draw,opacity=.5,name intersections={of=QP and g, by={[label=above:$F$]F}}] (F) -- (P);
+
+% the other plane's quadrangle
+\coordinate [label=below left:{$P'$}] (P') at (-.1,-.6);
+\coordinate [label=right:{$Q'$}] (Q') at ($(C)!4!(P')$);
+\path [draw] (C) -- (Q');
+\path [draw,opacity=.5,name path=Q'A] (Q') -- (A);
+\path [name path=BP'] (B) -- ($(B)!3!(P')$);
+\draw [opacity=.5,name intersections={of=BP' and Q'A, by=R'}] (R') -- (B);
+\coordinate [label=below:{$R'$}] (R') at (R');
+\path [draw,opacity=.5,dashed,name path=DP'] (D) -- ($(D)!2!(P')$);
+\path [draw,opacity=.5,dashed,name path=EQ'] (E) -- (Q');
+\path [name intersections={of=DP' and EQ', by=S'}] (S') -- (D);
+\coordinate [label=below:{$S'$}] (S') at (S');
+\path [draw,opacity=.5] (R') -- (F);
+\path [draw,opacity=.5] (P') -- (Q') -- (R') -- (P');
+
+% Gallucci's theorem
+\draw [blue] (P) -- (Q') (R) -- (S) -- (C);
+\draw [blue,name path=P'Q] (P') -- (Q); 
+\draw [green] (F) -- (P) -- (Q) (P') -- (Q') -- (C) (R') -- (S);
+\draw (P) circle (2pt);
+\draw (Q) circle (2pt);
+\draw (S) circle (2pt);
+\draw (C) circle (2pt);
+\draw (P') circle (2pt);
+\draw (Q') circle (2pt);
+\draw (S') circle (2pt);
+\draw [name intersections={of=RS and QP,by=x}] (x) circle (2pt);
+\path [draw,dashed,blue,name path=PQ'] (Q') to ($(Q')!2!(P)$);
+\path [draw,dashed,green,name path=R'S] (R') to ($(R')!2.5!(S)$);
+\draw [name intersections={of=PQ' and R'S,by=y}] (y) circle (2pt);
+\draw [name intersections={of=P'Q and R'S,by=z}] (z) circle (2pt);
+
+% plane intersections
+\draw [thick,red] (R) -- (S');
+\fill [opacity=.5,violet] (R) -- (Q') -- (P) -- (R);
+\fill [opacity=.5,violet] (R) -- (E) -- (Q') -- (R); 
+\fill [opacity=.5,yellow] (R) -- (P') -- (Q) -- (R);
+\fill [opacity=.5,yellow] (R) -- (D) -- (S') -- (R);
+\endtikzpicture\hfill
+\medskip
+
+Likewise, the transversal from $R'$ to $PQ$ and $P'Q'$ is $R'PQ\cdot R'P'Q'=R'FQ\cdot R'FQ'=R'F$.  Since $S'$ lies on $R'F$, these transversals meet, as desired. \qed 
+
+\proclaim{\Thm\ (M\"obius's Theorem)} If the four vertices of one tetrahedron lie respectively in the four face planes of another, while three vertices of the second lie in three face planes of the first, then the remaining vertex of the second lies in the remaining face plane of the first. \endproclaim
+\pf Assert that by definition, the four points of a tetrahedron do not lie on the same plane.  Let $P',Q',R',S$ denote the second tetrahedron.  We will construct the first tetrahedron to satisfy the hypothesis.  Without loss of generality, choose $P\in Q'R'S$ and $Q\in P'R'S$.  The line $PQ$ will lie on two different faceplanes of the first tetrahedron, at least one of which must contain one of the points $P',Q',R',S$.  Choose $R\in P'Q'S\cap PQS$ so that $PQR$ contains $S$; thusfar in the construction $P'$ and $Q'$ are symmetrically indistinguishable so if, for example, we chose $R\in P'Q'S$ such that $PQR$ contains $P'$ (respectively, $Q'$), we could rename the points for the sake of simplicity of notation by interchanging $P$ (resp. $Q$) with $S'$ and $S$ with $P'$ (resp. $Q'$).  Finally, we must have $S'\in P'Q'R'$ so that at least one of the two faceplanes containing the line $RS'$ also contains one of $P',Q',R'$.  (WHY NOT CHOOSE $R'$?)  Again, $P'$ and $Q'$ are symmetrically indistinguishable so choose $S'$ such that $P'\in QRS'$.  
+
+Now $PQRS'$ and $P'Q'R'S$ form the two tetrahedra, while $P,Q,R,S$ and $P',Q',R',S'$ lie in respective planes.  Thus the following six points form a quadrangular set
+$$\aligned
+A=PS\cap Q'R' \qquad& D=QR\cap P'S' \\
+B=QS\cap P'R' \qquad& E=PR\cap Q'S' \\
+C=RS\cap P'Q' \qquad& F=PQ\cap R'S'
+\endaligned$$
+and we have the respective containment of points in planes
+$$\aligned
+P\in Q'R'S \qquad& P'\in QRS' \\
+Q\in P'R'S \qquad& Q'\in PRS' \\
+R\in P'Q'S \qquad& S\in PQR \\
+S'\in P'Q'R'. \qquad&
+\endaligned$$
+Since $R'S'$ passes through $F$, which lies on $PQ$, the remaining vertex $R'$ lies in the remaining plane $PQS'$, as desired. \qed
+
+If we make the following notation change
+$$\aligned
+S=S \qquad& P'=S_{23}\\
+P=S_{14} \qquad& Q'=S_{13} \\
+Q=S_{24} \qquad& R'=S_{12} \\
+R=S_{34} \qquad& S'=S_{1234}
+\endaligned$$
+then we can deduce the first of a remarkable ``chain" of theorems due to Homersham Cox.
+
+\proclaim{\Thm\ (Cox's First Theorem)} Let $\gks_1\seq\gks_4$ be four planes of general position through a point $S$.  Let $S_{ij}$ be an arbitrary point on the line $\gks_i\cdot\gks_j$.  Let $\gks_{ijk}$ denote the plane $S_{ij}S_{ik}S_{jk}$.  Then the four planes $\gks_{234},\gks_{134},\gks_{124},\gks_{123}$ all pass through one point $S_{1234}$. \endproclaim
+
+In our context, $\gks_1,\gks_2,\gks_3,\gks_{123}$ are the face planes of the tetrahedron $P'Q'R'S$, while $\gks_{234},\gks_{134},\gks_{124},\gks_4$ are those of the inscribed-circumscribed tetrahedron $PQRS'$.  Let $\gks_5$ be a fifth plane through $S$.  Then $S_{15},S_{25},S_{35},S_{45}$ are four points in $\gks_5$; $\gks_{ij4}$ is a plane through the line $S_{i5}S_{j5}$; and $S_{ijk5}$ is the point $\gks_{ij5}\cdot\gks_{ik5}\cdot\gks_{jk5}$.  By the dual of Cox's first theorem, the four points $S_{2345},S_{1345},S_{1245},S_{1235}$ all lie in one plane.  Interchanging the roles of $\gks_4$ and $\gks_5$, we see that $S_{1234}$ lies in this same plane $S_{2345}S_{1345}S_{1245}$, which we naturally call $\gks_{12345}$.  Hence
+
+\proclaim{\Thm\ (Cox's Second Theorem)} Let $\gks_1\seq\gks_5$ be five planes of general position through $S$.  Then the five points $S_{2345},S_{1345},S_{1245},S_{1235},S_{1234}$ all lie in one plane $\gks_{12345}$. \endproclaim
+
+Adding the extra digits 56 to all the subscripts in the first theorem, we deduce
+
+\proclaim{\Thm\ (Cox's Third Theorem)} The six planes $\gks_{23456},\gks_{13456},\gks_{12456},\gks_{12356},\gks_{12346},\gks_{12345}$ all pass through one point $S_{123456}$. \endproclaim  
+
+The pattern is now clear:  we can continue indefinitely.  ``Cox's (d-3)rd theorem" provides a configuration of $2^{d-1}$ points and $2^{d-1}$ planes, with $d$ of the planes through each point and $d$ of the points in each plane.
+
+An interesting variant of Cox's chain of theorems can be obtained by means of the following specialization.  Instead of an arbitrary point on the line $\gks_i\cdot\gks_j$, we take $S_{ij}$ to be the second intersection of this line with a fixed sphere through $S$.  Since the sphere is a quadric through the first seven of the eight associated points $S,S_{14},S_{24},S_{34},S_{23},S_{13},S_{12},S_{1234}$, it passes through $S_{1234}$ too, and similarly through $S_{1235}$ and the rest of the $2^{d-1}$ points.  The $2^{d-1}$ planes meet the sphere in $2^{d-1}$ circles, which remain circles when we make an arbitrary stereographic projection.  We thus obtain Clifford's chain of theorems in the Euclidean plane.
+
+\proclaim{\Thm\ (Clifford's First Theorem)}.  Let $s_1,s_2,s_3,s_4$ be four circles of general position through a point $S$.  Let $S_{ij}$ be the second intersection of the circles $s_i$ and $s_j$.  Let $s_{ijk}$ denote the circle $S_{ij}S_{ik}S_{jk}$.  Then the four circles $s_{234},s_{134},s_{124},s_{123}$ all pass through one point $S_{1234}$. \endproclaim
+
+\proclaim{\Thm\ (Clifford's Second Theorem)}.  Let $s_5$ be a fifth circle through $S$.  Then the five points $S_{2345},S_{1345},S_{1235},S_{1234}$ all lie on one circle $s_{1235}$. \endproclaim
+
+\proclaim{\Thm\ (Clifford's Third Theorem)} The six circles $s_{23456},s_{13456},s_{12456},s_{12356},s_{12346},s_{12345}$ all pass through one point $S_{123456}$. \endproclaim
+
+And so on!
+
+Since the equation of the general quadric has 10 terms, a unique quadric $S=0$ can be drawn through nine points of general position; for, by substituting each of the nine given sets of $x$'s in $S=0$, we obtain nine linear equations to solve for the mutual ratios of the ten $c$'s.  Similarly, a ``pencil" (or singly infinite system) of quadrics $S+uS'=0$ can be drawn through eight points of general position, and a ``bundle" (or doubly infinite system) of quadrics $S+uS'+vS''=0$ can be drawn through seven points of general position.  But, by solving the simultaneous quadratic equations $S=0, S'=0, S''=0$, for the mutual ratios of the four $x$'s, we obtain eight points of intersection for these three quadrics.  Naturally these eight points lie on every quadric of the bundle.  Hence 
+
+Seven points of general position determine a unique eighth point, such that every quadric through the seven passes also through the eighth.
+
+This idea of the eighth associated point provides an alternative proof for Cox's first theorem (and therefore also for the theorems of M\"obius and Gallucci).  Let $S_{1234}$ be defined as the common point of the three planes $\gks_{234},\gks_{134},\gks_{124}$.  (The theorem states that $S_{1234}$ lies also on $\gks_{123}$).  Since the plane pairs $\gks_1\gks_{234},\gks_2\gks_{134},\gks_3\gks_{124}$ form three degenerate quadrics through the eight points $S$, $S_{14}, S_{24}, S_{34}, S_{13}, S_{12}, S_{1234}$, these are eight associated points.  The first seven belong also to the plane pair $\gks_4\gks_{123}$.  Since $S_{1234}$ does not lie in $\gks_4$, it must lie in $\gks_{123}$, as desired.
+
+\bigskip
+\bigskip
+%%% Bibliography %%%
+\Refs\nofrills{Bibliography}
+\widestnumber\key{SwMn}
+
+%\ref\key AtyM
+%\manyby M.F. Atiyah and I.G. MacDonald
+%\book Introduction to Commutative Algebra
+%\bookinfo Advanced Book Program
+%\publ Westview Press, A Member of the Perseus Books Group
+%\publaddr Boulder, Colorado
+%\yr 1969
+%\endref 
+
+%\ref\key BrH
+%\manyby W. Bruns and J. Herzog
+%\book Cohen-Macaulay Rings
+%\bookinfo Cambridge Studies in Advanced Mathematics 39
+%\publ Cambridge University Press
+%\publaddr Cambridge
+%\yr 1993
+%\endref 
+
+%\ref\key CaMa
+%\manyby G. Caviglia and D. Maclagan
+%\paper Some Cases of the Eisenbud-Green-Harris Conjecture
+%\yr 2007
+%\jour arXiv?
+
+%\ref\key ClLi
+%\manyby G.F. Clements and B. Lindstr\"om 
+%\paper A Generalization of a Combinatorial Theorem of Macaualay
+%\jour Journal of Combinatorial Theory
+%\vol 7
+%\pages 230-238
+%\yr 1969
+%\endref
+
+%\ref\key Coop
+%\manyby S.M. Cooper
+%\paper The Eisenbud-Green-Harris Conjecture for Ideals of Points
+%\jour ???
+%\yr 2008
+%\endref
+
+%\ref\key CoRo
+%\manyby S.M. Cooper and L.G. Roberts
+%\paper Algebraic Interpretation of a Theorem of Clements and Lindstr\"om
+%\jour Journal of Commutative Algebra ???
+%\yr 2008
+%\endref
+
+%\ref\key DuFo
+%\manyby David S. Dummit and Richard M. Foote
+%\book Abstract Algebra
+%\bookinfo Third Edition
+%\publ John Wiley and Sons, Inc.
+%\publaddr Hoboken, NJ
+%\yr 2004
+%\endref
+
+%\ref\key Eis
+%\by David Eisenbud
+%\book Commutative Algebra with a View Toward Algebraic Geometry
+%\bookinfo Graduate Texts in Mathematics {\bf 150} 
+%\publ Springer Science+Business Media, Inc.
+%\publaddr New York, NY
+%\yr 2004
+%\endref
+
+%\ref\key EGH1
+%\manyby D. Eisenbud, M. Green, J. Harris
+%\paper Higher Castelnuovo Theory
+%\jour Ast\'erisque
+%\vol 218
+%\pages 187-202
+%\yr 1993
+%\endref
+
+%\ref\key EGH2
+%\manyby D. Eisenbud, M. Green, J. Harris
+%\paper Cayley-Bacharach Theorems and Conjectures
+%\jour Bulletin of the American Mathematical Society
+%\vol 33(3)
+%\pages 295-324
+%\yr 1996
+%\endref
+
+%\ref\key Hart
+%\by Robin Hartshorne
+%\book Algebraic Geometry
+%\bookinfo Graduate Texts in Mathematics {\bf 52} 
+%\publ Springer Science+Business Media, LLC
+%\publaddr New York, NY
+%\yr 2006
+%\endref
+
+%\ref\key HD
+%\by Mel Hochster
+%\book $D$-modules and Lyubeznik's Finiteness Theorems for Local Cohomology
+%\bookinfo Notes, see \url{http://www.math.lsa.umich.edu/~hochster/615W11/dmod.pdf}
+%\publ Unpublished
+%\yr 2011
+%\endref
+
+%\ref\key Hoch
+%\by Mel Hochster
+%\book Math 614 Lecture Notes, Fall, 2010 
+%\bookinfo Course Notes, see \url{http://www.math.lsa.umich.edu/~hochster/614F10/614.html}
+%\publ Unpublished
+%\yr 2010
+%\endref
+
+%\ref\key HW11
+%\by Mel Hochster
+%\book Local Cohomology
+%\bookinfo Course Notes, see \url{http://www.math.lsa.umich.edu/~hochster/615W11/loc.pdf}
+%\publ Unpublished
+%\yr 2011
+%\endref
+
+%\ref\key Iyen
+%\manyby Srikanth B. Iyengar, Graham J. Leuschke, Anton Leykin, Claudia Miller, Ezra Miller, Anurag K. Singh, Uli Walther 
+%\book Twenty-Four Hours of Local Cohomology
+%\bookinfo Graduate Studies in Mathamatics, Volume 87
+%\publ American Mathematical Society 
+%\publaddr Providence, RI
+%\yr 2007
+%\endref
+
+%\ref\key Rich
+%\by B.P. Richert
+%\paper A Study of the Lex Plus Powers Conjecture
+%\jour Journal of Pure and Applied Algebra
+%\vol 186(2)
+%\pages 169-183
+%\yr 2004
+%\endref
+
+%\ref\key Sm
+%\by Karen Smith
+%\book Math 631: Intro to Algebraic Geometry; Fall 2008 Problem Sets
+%\bookinfo see \url{http://www.math.lsa.umich.edu/~kesmith/2008-631hmwk.html}
+%\publ Unpublished
+%\yr 2008
+%\endref
+
+%\ref\key Stan
+%\by R.P. Stanley
+%\paper Hilbert Functions of Graded Algebras
+%\jour Advances in Mathematics
+%\vol 28
+%\pages 57-83
+%\yr 1978
+%\endref
+
+%\ref\key Weib
+%\by Charles A. Weibel
+%\book An introduction to homological algebra
+%\bookinfo Cambridge studies in advanced mathematics, 38
+%\publ Cambridge University Press
+%\publaddr Cambridge, United Kingdom
+%\yr 1994
+%\endref
+
+%%% online template %%%
+%\Refs : : : \endRefs list of references
+%\refstyle#1 specify style A, B, or C
+%A = initials, B = name, C = number
+%\ref : : : \endref individual reference
+%\no or \key number or key for reference
+%\widestnumber\no#1 or \widestnumber\key#1
+%\by author
+%\bysame same as previous author
+%\paper name of paper
+%\vol volume
+%\yr year of publication
+%\jour journal
+%\page or \pages page(s)
+%\toappear to appear
+%\inbook article in a book
+%\moreref additional reference information
+%\paperinfo extra information after paper title
+%\procinfo information about proceedings
+%\issue issue number
+%\lang language
+%\transl information about translated version
+%\book book
+%\ed or \eds editor(s)
+%\publ publisher
+%\publaddr publisher address
+%\bookinfo extra information after book title
+%\finalinfo extra information for end
+%\miscnote same as \finalinfo, in parens.
+
+\endRefs
+
+\bye
