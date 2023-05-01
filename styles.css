@@ -14,7 +14,7 @@ div {
 	width:800px; 
 	margin:auto;
 	padding:18px;
-	/*padding-top:0px; */ 
+	/*padding-top:0; */ 
 	opacity:0.9;
 	/*border:2px solid #BADA55*/ /* bad ass border, for debugging */
 }
@@ -23,5 +23,16 @@ div {
 	float:left;
 	padding:0;
 }
-figure { margin:0; }	
-li p { margin-top:5px; }	
+figure { margin:0; }		
+.hidden {
+	padding:0;
+	display:none;
+}	
+.equation {
+	padding:0;
+	width:600px;
+	margin:-16px;
+	margin-left:80px;
+	margin-right:120px;
+}	
+li p { margin-top:5px; }

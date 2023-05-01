@@ -1,0 +1,15 @@
+/* JavaScript used on all the pages (not including the home page) */
+$(function(){
+	$('#header').load('../pagesheader.html');
+}); /* Calls the header code */
+$(function(){
+	$('#lastmodified').load('../lastmodified.html');
+}); /* Calls the last modified code */
+function toggleShowHide(elementId) {
+	var element = document.getElementById(elementId);
+	if (element.style.display == "inline") {
+		element.style.display = "none";
+	} else {
+		element.style.display = "inline";
+	}
+} /* Toggles hidden text.  Code modified from https://www.toptip.ca/2009/09/showhide-text-on-web-page.html. */
