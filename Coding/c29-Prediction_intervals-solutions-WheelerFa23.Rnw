@@ -1,0 +1,260 @@
+\documentclass[12pt]{exam}
+
+\usepackage{graphics,amsthm,amsmath,amssymb,wrapfig,multicol,mdframed,multirow,enumitem, tikz,hyperref}
+
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11.0in}
+\setlength{\textwidth}{7.25in}
+\setlength{\textheight}{10.0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.5in}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{-0.75in}
+\setlength{\headheight}{0.0in}
+\setlength{\marginparwidth}{0in}
+\setlength{\marginparsep}{0in}
+\setlength{\parindent}{0pt}
+
+\newcommand{\D}[1]{\displaystyle{#1}}
+\newcommand{\vwhole}{\vspace*{\normalbaselineskip}}
+\newcommand{\vthreequart}{\vspace*{0.75\normalbaselineskip}}
+\newcommand{\vhalf}{\vspace*{0.5\normalbaselineskip}}
+\newcommand{\vquart}{\vspace*{0.25\normalbaselineskip}}
+\newcommand{\negvwhole}{\vspace*{-\normalbaselineskip}}
+\newcommand{\negvthreequart}{\vspace*{-0.75\normalbaselineskip}}
+\newcommand{\negvhalf}{\vspace*{-0.5\normalbaselineskip}}
+\newcommand{\negvquart}{\vspace*{-0.25\normalbaselineskip}}
+
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{ques}{Question}
+\newtheorem*{recall}{Recall}
+\newtheorem*{remark}{Remark}
+
+%boxed emptybox environment
+\newenvironment{defn}[1]
+{ \vspace{0.1in} \begin{mdframed} \textbf{Definition.}}
+{ \end{mdframed} \vspace{-0.05in}}
+
+
+%boxed emptybox environment
+\newenvironment{emptybox}[1]
+{ \vspace{0.1in} \begin{mdframed} \textbf{#1}}
+{ \end{mdframed} \vspace{-0.05in}}
+
+%boxed theorem environment
+\newenvironment{thm}[1]
+{\vspace{0.1in} \begin{mdframed} \textbf{\uppercase{#1}}.\itshape}
+{\end{mdframed} \vspace{-0.05in} }
+
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\printanswers
+%\SweaveOpts{concordance=TRUE}
+
+\noindent \large \textbf{MAT 130, Handout 27: Prediction intervals for $y$ \& mean of $y$} \large \emph{(Ch 24, 25)}  \normalsize
+
+%Learning Objective Box 
+\begin{thm}{Learning Objectives} \small
+\noindent After this class you should be able to...\negvhalf
+\begin{itemize}[leftmargin=*]
+  \item use R to create confidence intervals for the average value of the response variable given a set of values for the predictor variables. \negvhalf
+  \item use R to create prediction intervals for the value of the response variable for a particular individual given a set of values for the predictor variables. \negvhalf
+	\item explain the difference between these two kinds of intervals.\negvhalf
+	\item determine how the width of these intervals changes as the sample size changes, the confidence level changes, and the values of the predictor variables change.\negvhalf
+\end{itemize}
+Save the script file from today as \texttt{29Nov-Prediction\_intervals.R}
+\end{thm}
+
+
+\begin{example} We previously used the \texttt{Galton} data frame, to build a linear model for the heights (in inches) of adult children as a function of the heights of their parents and their sex at birth in the 1880s.  
+\end{example}
+<<>>=
+height_lm = lm(height~father+mother+sex, data = Galton)
+coef(height_lm)
+@
+$$height = 15.34+ 0.41\cdot father + 0.32\cdot mother + 5.22\cdot sex_M$$
+
+\begin{ques} For the variable \texttt{sex}, how did R pair Female \& Male with 0 \& 1? %Female=0, Male=1
+How much taller, on average, is a Male than a Female according to this model? %5.22 inches
+\end{ques}
+\begin{solution}
+We plug in 1 for \texttt{sexM} when the individual is male, and 0 for \texttt{sexM} when the individual is female.  On average, a male is 5.22 inches taller than a female.
+\end{solution}
+\vspace{1cm}
+
+\begin{ques} Use the \texttt{predict} command to find the expected height of the daughter of a 62 inch tall mother and a 65 inch tall father from this time period. Based on the value of $R_a^2$ (found in the \texttt{summary}), how reliable do you think this prediction is?
+\end{ques}
+\begin{solution}[1cm]
+<<>>=
+predict(height_lm, data.frame(mother=62, father=65, sex='F'))
+@
+With $R_a^2=64\%$, we recognize that this estimate may not be extremely accurate.  It is difficult with the tools we have used, to quantify just how good or bad this estimate might be.
+\end{solution}
+
+
+
+
+\begin{emptybox}{Regression Model}\\
+Our regression model for $y=height$ is $$y=\beta_0+\beta_{mother}\cdot mother+\beta_{father}\cdot father+\beta_{sex_M}\cdot sex_M+\epsilon$$
+\begin{itemize}[leftmargin=*]
+\item $\epsilon$ represents how far a particular child's height differs from the regression equation value given by the other terms involving the $\beta$'s.  
+\item The $\beta$'s themselves are unknown parameters.
+\item We know how to find confidence intervals for each $\beta$ that capture our uncertainty in their values.
+\end{itemize}
+\end{emptybox}
+\negvhalf
+\begin{ques}
+Even if we could somehow know the values of the $\beta$'s exactly, why would it still not be possible to predict the height of a particular child exactly?
+\end{ques}
+\begin{solution}
+Because the $\epsilon$ is a random quantity specific to each child.  There's no way to predict its exact value by studying other children.
+\end{solution}
+
+\begin{emptybox}{Interval Estimates:}
+There are two different questions that we can answer with interval estimates, and their difference is \textit{subtle}.\negvhalf
+\begin{itemize}[leftmargin=*]
+  \item What is the average height of all children of a particular sex whose parents heights are particular values? \negvhalf
+  \item What is the height of one particular child of a particular sex whose parents heights are particular values? \negvhalf
+  \item The first of these intervals is called a %\underline{\hspace{3cm}} \underline{\hspace{3cm}} 
+   \textbf{confidence interval}
+for the average value of the response variable.\negvhalf
+\item The second of these intervals is called a %\underline{\hspace{3cm}} \underline{\hspace{3cm}}  
+\textbf{prediction interval}
+for a particular value of the response variable.
+\end{itemize}
+\end{emptybox}
+
+\begin{ques} One of these intervals is \textbf{always} wider than the other.  Which one do you think is wider and why?
+\end{ques}
+\begin{solution}[1.5cm]
+The prediction interval is always wider. A particular person could certainly take on any of the values that are plausible for the average, but this person may not be average.  They might be taller or shorter than average, so the interval to describe their height must be even wider than the interval that describes the height of the average person.
+\end{solution}
+
+\begin{emptybox}{Interval Estimates in R}
+The same \texttt{predict} command that we have used to find point estimates can also be used to find confidence intervals for the average value of $y$ as well as prediction intervals for the value of a particular $y$.  The syntax is identical to what we have seen except for the extra flag at the end of the command to specify: \texttt{interval = `confidence'}, or \texttt{interval = `prediction'}. In addition, we have the ability to specify the confidence level of the interval with the same \texttt{level} flag as we have previously.\\ \negvhalf
+
+\small{
+\texttt{predict(height\_lm, data.frame(mother=62, father=65, sex=`F'), interval = `confidence')}\\
+\texttt{predict(height\_lm, data.frame(mother=62, father=65, sex=`F'), interval = `prediction')}
+}
+\end{emptybox}
+
+\begin{ques}
+How much wider is the 95\% prediction interval for a particular son's height than the 95\% confidence interval for the average of all sons' heights born to a father who is 72 inches and a mother who is 70 inches? 
+\end{ques}
+\begin{solution}[1cm]
+The width of the prediction interval is 8.50 inches while the confidence width interval is just 0.88 inches.  The difference is 7.63 inches. 
+\end{solution}
+\begin{example}{Predicting $mpg$ using $wt$, $cyl$, and $hp$ in the \texttt{mtcars} data frame.}
+\end{example}
+\begin{ques}
+Consider the 1974 Saab Sonett III, a car that was not included in the \texttt{mtcars} data frame, and one for which it is difficult to find any record of its fuel efficiency.  This vehicle weighed 1940 lb and had a 4 cylinder, 75 hp engine.  Use the \texttt{predict} function to find a point estimate for the fuel efficiency of this car.    
+\end{ques}
+\begin{solution}[.6in]
+<<>>=
+mpg_lm = lm(mpg~wt+cyl+hp, data = mtcars)
+predict(mpg_lm, data.frame(wt=1.940, cyl=4, hp=75))
+@
+\end{solution}
+\begin{ques}
+Based on the value of $R_a^2$, do you think that this prediction is reliable?  How reliable? (Saab did not publish an official value for this vehicle, so we have no official value that we can compare our prediction to.)
+\end{ques}
+\begin{solution}[1cm]
+<<>>=
+summary(mpg_lm)
+@
+$R_a^2=0.83$ suggests that this model should make reasonably accurate predictions.  How reliable?  It's difficult to make a quantitative statement about how far off this estimate might be without additional statistical tools.\end{solution}
+
+
+\begin{ques}
+Find a 99\% confidence interval for the average value of the fuel efficiency of vehicles with the values specified for the 1974 Saab Sonett III.   Also find a 99\% prediction interval for an individual 1974 Saab Sonnett III.  Explain why the prediction interval is wider.
+\end{ques}
+\begin{solution}[1.5in]
+<<>>=
+predict(mpg_lm, data.frame(wt=1.940, cyl=4, hp=75), level = 0.99, 
+        interval = "confidence")
+predict(mpg_lm, data.frame(wt=1.940, cyl=4, hp=75), level = 0.99, 
+        interval = "prediction")
+@
+Even after we have an interval that we are confident contains the average, we need to make that interval even wider to account for the fact that this particular model might be above or below average.
+\end{solution}
+% \begin{ques}
+% Find a 99\% confidence interval for the average value of the fuel efficiency of the 1974 Saab Sonett III.   Also find a 99\% prediction interval for this same value.  Explain why the prediction interval is wider.
+% \end{ques}
+% 
+% \begin{solution}[.6in]
+% <<>>=
+% predict(mpg_lm, data.frame(wt=1.940, cyl=4, hp=75), level = 0.99, interval = "confidence")
+% predict(mpg_lm, data.frame(wt=1.940, cyl=4, hp=75), level = 0.99, interval = "prediction")
+% @
+% Even after we have an interval that we are confident contains the average, we need to make that interval even wider to account for the fact that this particular model might be above or below average.
+% \end{solution}
+\begin{remark} An internet blog from a Saab enthusiast reports that the actual fuel efficiency of this model vehicle is 27.2 mpg.
+\end{remark}
+
+\begin{ques}
+Find the mean value of each predictor variable from the \textbf{mtcars} data frame.  Record their values below.  Then write down the 95\% confidence interval for the average $mpg$ as well as the 95\% prediction interval for the $mpg$ of a vehicle with these values of the predictors.
+\begin{itemize}
+\item wt:
+\item hp:
+\item cyl:
+\item CI:
+\item PI:
+\end{itemize}
+\end{ques}
+\begin{solution}
+<<>>=
+summary(mtcars)
+predict(mpg_lm, data.frame(wt=3.217, hp=146.7, cyl=6.188),
+        interval='confidence')
+predict(mpg_lm, data.frame(wt=3.217, hp=146.7, cyl=6.188),
+        interval='prediction')
+@
+\begin{itemize}
+\item wt: 3.217
+\item hp: 146.7
+\item cyl: 6.188
+\item CI: (19.2, 21.0)
+\item PI: (14.9, 25.3)
+\end{itemize}
+\end{solution}
+
+\begin{ques}
+Find the minimum value of each predictor variable from the \textbf{mtcars} data frame.  Record their values below.  Then write down the 95\% confidence interval for the average $mpg$ as well as the 95\% prediction interval $mpg$ for a vehicle with these values of the predictors.  How does the width of these intervals compare to the ones in the previous question?
+\begin{itemize}
+\item wt:
+\item hp:
+\item cyl:
+\item CI:
+\item PI:
+\item Compare widths:\vspace{1cm}
+\end{itemize}
+\end{ques}
+\begin{solution}
+The \texttt{summary()} function gives the min values.  Then use \texttt{predict()} again to get the intervals.
+<<>>=
+predict(mpg_lm, data.frame(wt=1.513, hp=52.0, cyl=4.000),
+        interval='confidence')
+predict(mpg_lm, data.frame(wt=1.513, hp=52.0, cyl=4.000),
+        interval='prediction')
+@
+\begin{itemize}
+\item wt: 1.513
+\item hp: 52.0
+\item cyl: 4.000
+\item CI: (27.3, 31.2)
+\item PI: (23.8, 34.8)
+\item Compare widths: The intervals are higher and wider than the ones from the previous problem.
+\end{itemize}
+\end{solution}
+
+\begin{remark} Interval estimates always grow wider as the values of the predictor variables move further away from the sample averages.  Does this behavior make intuitive sense?  Why or why not?
+\end{remark}
+\begin{solution}
+When the values of the predictor variables move further away from the average the new fitted value becomes skewed.  
+\end{solution}
+\end{document}
