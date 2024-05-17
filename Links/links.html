@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Links | Ashley K. Wheeler</title>
+	<title>Links | Ashley K. W. Warren</title>
 	<link rel="stylesheet" href="../styles.css"> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!--Used to recycle code-->
+	<script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript from a file -->
 	<script>
 		$(function(){
 			$('#header').load('../pagesheader.html');
@@ -22,30 +23,34 @@
 	<div>
 		<h2>Links</h2>
 		<p>This website is full of links to stuff I've done.  Here are some of the most important ones, plus more, all in one place.</p>
+	</div>	
+	<div><h3><a href="../resume2023.pdf">My resum&#233;</a> and <a href="../Academia/WheelerCV.pdf"> CV</a> (as of Dec 2023)</h3>
+	<hr>
+	</div>
+	<div><h3><a href="#" onClick="toggleShowHide('projects'); return false;">Projects</a></h3>
+		<hr>
+		<div id="projects" class="hidden">
 		<ul>
-			<li><a href="../resume2023.pdf">My resum&#233;</a> and <a href="../Academia/WheelerCV.pdf"> CV</a> (as of Dec 2023)
+			<li><a href="httpw://wh33les.github.io/538Project">538 project</a>
+			<p>One of my earliest experiences with Python.  Results of a script I wrote to scrape metadata from <a href=https://abcnews.go.com/538">538</a>.			
+			</li>
+			<li><a href="https://wh33les.github.io/Blog/" target="_blank">My coding blog</a>
+			<p>Posts about my journey learning code, and a few machine learning posts, too!</p>
 			</li>
 			<li>
-				<a href="https://github.com/wh33les" target="_blank">My GitHub account</a>  
-				<p>This is probably the most important link of all.  Total playground for me to practice code.  The files for this website are in the <a href="https://github.com/wh33les/wh33les.github.io" target="_blank">wh33les.github.io</a> repository.  The files for my coding blog are in the <a href="https://github.com/wh33les/Blog" target="_blank">Blog</a> repository.  Also has projects and exercises I've done with Erd&#246;s Institute, and teaching and research materials I've created using code.</p>
-			</li>	
-			<li>
-				<a href="https://wh33les.github.io/Blog/" target="_blank">My coding blog</a>  
-				<p>Posts about my journey learning code, and a few machine learning posts, too!</p>
-			</li>	
-			<!--<li>
-				<a href="https://wheeler.math.gatech.edu" target="_blank">My Georgia Tech website</a>  
-				<p>Awful site-builder that was a pain to use, but at least I got the domain name I wanted.  There might've been a way to build the page from scratch, the way I prefer, but I never found out how.  The links to the courses I taught are just for the SY 2021-2022, because the pandemic was still going and I needed a place to put recordings of my lectures.  Then Georgia Tech sunsetted BlueJeans and switched to Zoom, so those lectures are no longer available (I did try to export all the videos but was never able to).</p>
-			</li>-->
-			<li>
-				<a href="https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler" target="_blank">Virtual inspiring talk</a>
-				<p>YouTube playlist that is part of a series aimed at promoting early career mathematicians.  Hosted on my Mount Holyoke YouTube account.  This playlist is the only thing there, so I have been considering moving it to my personal YouTube account.  I'm afraid of losing this account since I'm no longer at Mount Holyoke.</p>
+			<a href="https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler" target="_blank">Virtual inspiring talk</a>
+			<p>YouTube playlist that is part of a series aimed at promoting early career mathematicians.  Hosted on my Mount Holyoke YouTube account.  This playlist is the only thing there, so I have been considering moving it to my personal YouTube account.  I'm afraid of losing this account since I'm no longer at Mount Holyoke.</p>
 			</li>
 			<li>
-				<a href="https://www.youtube.com/@leyjfk6ify" target="_blank">Personal YouTube channel</a>
-				<p>Calculus I videos I made in spring of 2022.  I had the idea that I would eventually do graduate level topics, too (I'm dying to do a down-to-earth post on cohomology, for example).  We'll see.</p>
+			<a href="https://www.youtube.com/@leyjfk6ify" target="_blank">Personal YouTube channel</a>
+			<p>Calculus I videos I made in spring of 2022.  I had the idea that I would eventually do graduate level topics, too (I'm dying to do a down-to-earth post on cohomology, for example).  We'll see.</p>
 			</li>
-		</ul>	
+		</ul>
+		</div>
+	</div>	
+	<div><h3><a href="https://github.com/wh33les" target="_blank">My GitHub account</a></h3>
+		<hr>	
+		<p>Total playground for me to practice code.  The files for this website are in the <a href="https://github.com/wh33les/wh33les.github.io" target="_blank">wh33les.github.io</a> repository.  The files for my coding blog are in the <a href="https://github.com/wh33les/Blog" target="_blank">Blog</a> repository.  Also has projects and exercises I've done with Erd&#246;s Institute, and teaching and research materials I've created using code.</p>	
 	</div>
 	<div id ="lastmodified"></div>
 </body>
