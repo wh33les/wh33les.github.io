@@ -17,6 +17,7 @@ div {
 	/*padding-top:0; */ 
 	opacity:0.9;
 	/*border:2px solid #BADA55*/ /* bad ass border, for debugging */
+	overflow: auto;
 }
 .buttons {
 	width:160px;
