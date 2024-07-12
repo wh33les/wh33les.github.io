@@ -30,18 +30,6 @@
 		<p>You can also see some of code I've written on <a href="https://github.com/wh33les">my Github account</a>.</p>
 	</div>
 	<div>
-		<h3><a href="#" onClick="toggleShowHide('latex'); return false;">$\LaTeX$</a></h3>
-		<hr>
-		<div id="latex" class="hidden">
-			<p><a href="https://www.latex-project.org/">$\LaTeX$</a> is a typesetting language used to render math equations.  It is the standard for formatting math papers for publication (<a href="https://www.ams.org/home/page">AMS</a> has several packages).</p>
-			<p>I first learned $\LaTeX$ in my junior or senior year of undergrad.  To use it, I downloaded an entire suite with <a href="https://miktex.org/">MikTeX</a>, which is the distribution, its package manager, and a program called <a href="https://www.texniccenter.org/">TeXnicCenter</a>, a text editor with a compiler and a preview of the .pdf rendered.  What I liked about TeXnicCenter was that it had buttons for common $\LaTeX$ commands, and this is how I first learned them.</p>
-			<p>However, as I got more familiar with $\LaTeX$, I found that I no longer needed TeXnicCenter.  At one point during grad school, <a href="https://tex.stackexchange.com/questions/43984/using-notepad-with-miktex-on-windows">I found a way</a> to compile directly from <a href="https://notepad-plus-plus.org/">Notepad++</a> (with MikTeX installed), then render the .pdf in the lightweight .pdf viewer, <a href="https://www.sumatrapdfreader.org/free-pdf-reader">Sumatra PDF</a>.</p>
-			<p>$\LaTeX$ has a few notable incarnations.  An earlier version exists, called TeX back when it was first implemented, and called PlainTeX now.  Until recent years, my Ph. D. advisor wrote all of his lecture notes using PlainTeX, so when I was giving talks at the student seminars in grad school, I wanted to make my lecture notes look like his.  <a href="Proj3D.pdf">Here is an example of a talk I wrote using PlainTeX.</a><!-- and here is <a href="Proj3d.tex">its source</a>.--></p>
-			<p>$\LaTeX$ also has the capability to make posters and slide shows.  <a href="REU2022poster/REU2022poster.pdf">Here is a poster some students of mine and I made.</a><!--, and <a href="https://github.com/wh33les/wh33les.github.io/tree/main/Coding/REU2022poster">here</a> are the source files.-->  $\LaTeX$ has a document class called Beamer that is used to make slide shows.  The fun part is all the commands that customize the color scheme and layout.  It is also possible to combine slide shows into one big slide show.  <a href="https://github.com/wh33les/AcademiaMaterials/tree/main/CalcILectures">Here is an example, of some individual calc I lectures I made at University of Arkansas.</a>  <a href="cal1spr16Lectures.pdf">Here is the final combined output.</a>  This isn't the only time I've made lecture slides this way (see my <a href="https://github.com/wh33les/AcademiaMaterials">AcademiaMaterials repository</a>).</p>
-			<p>The final thing I will say about $\LaTeX$ is that it has a package called TikZ that is used for making graphics.  There's a bit of a learning curve to use it, but I spent some time learning some things when I was in grad school.  <a href="JMM2014.pdf">This talk uses it a lot.</a><!-- (sorry I don't have the source file anymore).-->  The poster I linked to above also uses it a bit.</p>
-		</div>	
-	</div>
-	<div>
 		<h3><a href="#" onClick="toggleShowHide('python'); return false;">Python</a></h3>
 		<hr>
 		<div id="python" class="hidden">
@@ -60,6 +48,16 @@
 		</div>	
 	</div>
 	<div>
+		<h3><a href="#" onClick="toggleShowHide('javascript'); return false;">JavaScript</a></h3>
+		<hr>
+		<div id="javascript" class="hidden">
+			<p>I've used JavaScript since as early as grad school, but it's always been small snippets I found on the internet to make my webpages do certain things.  One ambitious thing I tried to do on my Arkansas website was to have pictures of my cats that change every time you refresh the page.  I never got it to work, but you can still see the code commented out on the Arkansas home page source file.</p>
+			<p>I didn't really <i>learn</i> any JavaScript until April 2023 when I was using the library <a href="https://d3js.org/">d3.js</a> for my data visualization minicourse project with Erd&#246;s Institute.  <a href="https://wh33les.github.io/FitbitStatsProject/">Here is the final product,</a> the files are in my <a href="https://github.com/wh33les/FitbitStatsProject">FitbitStatsProject repository</a>, and I also wrote a couple of blog posts about it.</p>
+			<p>JavaScript is everywhere!  I found out recently that <a href="https://www.mathjax.org/">MathJax</a> is another JavaScript library that I had to import to my blog site in order to render $\LaTeX$ in my posts.  I've found myself incorporating a little JavaScript in building this website, too.  In the future I would like to use this website as a means to practice and experiment using JavaScript.  Maybe it's not a good idea to use too much, since it can slow down page-loading time, if the viewer's browser even supports JavaScript.  On the other hand, I think using more JavaScript for this website could make it look more contemporary.</p> 
+			<p>I recently bought <a href="https://www.amazon.com/dp/1491952024?psc=1&ref=ppx_yo2ov_dt_b_product_details">Flanagan's JavaScript: The Definitive Guide</a>.  After reading the first 10 chapters, I've learned a lot about object-oriented programming in general, client-side/frontend and server-side/backend programming, and I've gained some more insight into Python classes.  Now I just need to practice what I've learned (this website!).</p>
+		</div>	
+	</div>
+	<div>
 		<h3><a href="#" onClick="toggleShowHide('r'); return false;">R</a></h3>
 		<hr>
 		<div id="r" class="hidden">
@@ -67,13 +65,15 @@
 		</div>	
 	</div>
 	<div>
-		<h3><a href="#" onClick="toggleShowHide('javascript'); return false;">JavaScript</a></h3>
+		<h3><a href="#" onClick="toggleShowHide('latex'); return false;">$\LaTeX$</a></h3>
 		<hr>
-		<div id="javascript" class="hidden">
-			<p>I've used JavaScript since as early as grad school, but it's always been small snippets I found on the internet to make my webpages do certain things.  One ambitious thing I tried to do on my Arkansas website was to have pictures of my cats that change every time you refresh the page.  I never got it to work, but you can still see the code commented out on the Arkansas home page source file.</p>
-			<p>I didn't really <i>learn</i> any JavaScript until April 2023 when I was using the library <a href="https://d3js.org/">d3.js</a> for my data visualization minicourse project with Erd&#246;s Institute.  <a href="https://wh33les.github.io/FitbitStatsProject/">Here is the final product,</a> the files are in my <a href="https://github.com/wh33les/FitbitStatsProject">FitbitStatsProject repository</a>, and I also wrote a couple of blog posts about it.</p>
-			<p>JavaScript is everywhere!  I found out recently that <a href="https://www.mathjax.org/">MathJax</a> is another JavaScript library that I had to import to my blog site in order to render $\LaTeX$ in my posts.  I've found myself incorporating a little JavaScript in building this website, too.  In the future I would like to use this website as a means to practice and experiment using JavaScript.  Maybe it's not a good idea to use too much, since it can slow down page-loading time, if the viewer's browser even supports JavaScript.  On the other hand, I think using more JavaScript for this website could make it look more contemporary.</p> 
-			<p>I recently bought <a href="https://www.amazon.com/dp/1491952024?psc=1&ref=ppx_yo2ov_dt_b_product_details">Flanagan's JavaScript: The Definitive Guide</a>.  After reading the first 10 chapters, I've learned a lot about object-oriented programming in general, client-side/frontend and server-side/backend programming, and I've gained some more insight into Python classes.  Now I just need to practice what I've learned (this website!).</p>			
+		<div id="latex" class="hidden">
+			<p><a href="https://www.latex-project.org/">$\LaTeX$</a> is a typesetting language used to render math equations.  It is the standard for formatting math papers for publication (<a href="https://www.ams.org/home/page">AMS</a> has several packages).</p>
+			<p>I first learned $\LaTeX$ in my junior or senior year of undergrad.  To use it, I downloaded an entire suite with <a href="https://miktex.org/">MikTeX</a>, which is the distribution, its package manager, and a program called <a href="https://www.texniccenter.org/">TeXnicCenter</a>, a text editor with a compiler and a preview of the .pdf rendered.  What I liked about TeXnicCenter was that it had buttons for common $\LaTeX$ commands, and this is how I first learned them.</p>
+			<p>However, as I got more familiar with $\LaTeX$, I found that I no longer needed TeXnicCenter.  At one point during grad school, <a href="https://tex.stackexchange.com/questions/43984/using-notepad-with-miktex-on-windows">I found a way</a> to compile directly from <a href="https://notepad-plus-plus.org/">Notepad++</a> (with MikTeX installed), then render the .pdf in the lightweight .pdf viewer, <a href="https://www.sumatrapdfreader.org/free-pdf-reader">Sumatra PDF</a>.</p>
+			<p>$\LaTeX$ has a few notable incarnations.  An earlier version exists, called TeX back when it was first implemented, and called PlainTeX now.  Until recent years, my Ph. D. advisor wrote all of his lecture notes using PlainTeX, so when I was giving talks at the student seminars in grad school, I wanted to make my lecture notes look like his.  <a href="Proj3D.pdf">Here is an example of a talk I wrote using PlainTeX.</a><!-- and here is <a href="Proj3d.tex">its source</a>.--></p>
+			<p>$\LaTeX$ also has the capability to make posters and slide shows.  <a href="REU2022poster/REU2022poster.pdf">Here is a poster some students of mine and I made.</a><!--, and <a href="https://github.com/wh33les/wh33les.github.io/tree/main/Coding/REU2022poster">here</a> are the source files.-->  $\LaTeX$ has a document class called Beamer that is used to make slide shows.  The fun part is all the commands that customize the color scheme and layout.  It is also possible to combine slide shows into one big slide show.  <a href="https://github.com/wh33les/AcademiaMaterials/tree/main/GroupTheoryLectures/algebraIndividualLectures">Here is an example, of some individual group theory lectures I made in summer 2016.</a>  <a href="UNABRIDGEDalgebraNotesMSRI-UP2016.pdf">Here is the final combined output.</a>  <!--This isn't the only time I've made lecture slides this way (see my <a href="https://github.com/wh33les/AcademiaMaterials">AcademiaMaterials repository</a>).--></p>
+			<p>The final thing I will say about $\LaTeX$ is that it has a package called TikZ that is used for making graphics.  There's a bit of a learning curve to use it, but I spent some time learning some things when I was in grad school.  <a href="JMM2014.pdf">This talk uses it a lot.</a><!-- (sorry I don't have the source file anymore).-->  The poster I linked to above also uses it a bit.</p>
 		</div>	
 	</div>
 	<div>
