@@ -1,2 +1,2 @@
 # wh33les.github.io
-My website!  Every time I have moved from one job to the next I have had to create a new professional webpage.  Now I have a permanent place to put all of my materials.  In addition, I see this webpage as becoming an opportunity for me to experiment with learning JavaScript.
+Welcome to my professional website! After creating new webpages with each job change, I finally have a permanent space to showcase my work and materials. This site also serves as a platform for me to experiment and learn JavaScript. Explore my projects and follow my journey in web development.
