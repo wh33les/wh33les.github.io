@@ -41,7 +41,3 @@ figure { margin:0; }
 }	
 li p { margin-top:5px; }
 
-/* To hide the figures on the main page */
-figure {
-    display: none;
-}
