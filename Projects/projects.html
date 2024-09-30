@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100299463-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-100299463-1');
+	</script>
+	<title>Projects | Ashley K. W. Warren</title>
+	<link rel="stylesheet" href="../styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!--Used to recycle code-->
+	<script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript from a file -->
+	<script>
+		$(function () {
+			$('#header').load('../pagesheader.html');
+		});
+	</script> <!--Calls the header code-->
+	<script>
+		$(function () {
+			$('#lastmodified').load('../lastmodified.html');
+		});
+	</script> <!--Calls the last modified code-->
+	<base target="_blank"> <!-- Opens links in a new tab by default -->
+</head>
+
+<body>
+	<div id="header"></div>
+	<div>
+		<h2>Projects</h2>
+        <ul>
+            <li><a href="https://wh33les.github.io/Blog/">Code and transitioning from academia to the tech
+                    industry</a>
+                <p>My blog! Read posts about my journey learning to code and related topics like machine learning.
+                </p>
+            </li>
+            <li><a href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/BiasvReliability/BiasvsReliability">Media bias vs. reliability</a>
+            <p>This visualization plots the political bias (left/right) of around 800 news media sources against their reliability ratings, according to Ad Fontes Media. The data was scraped using Python and plotted using Tableau.
+            </p>
+            </li>
+            <li><a
+                    href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/2024U_S_PresidentialElectionPollingaveragesovertimeforthe2majorparties/Presentation">2024
+                    U.S. presidential election</a>
+                <p>For my debut Tableau project, I analyzed <a
+                        href="https://projects.fivethirtyeight.com/polls/data/president_polls.csv">over 4,000 polls
+                        spanning three years of data from FiveThirtyEight.</a> Using Pandas, I applied the .groupby
+                    and .bfill methods to calculate daily rolling polling averages for candidates Donald Trump,
+                    Kamala Harris, and Joe Biden, covering the period from April 7, 2021, to August 11, 2024 (periodic updates since then). The Tableau dashboard allows users to toggle between polling data for likely voters, registered
+                    voters, and all voters.</p>
+            </li>
+            <li><a href="https://github.com/wh33les/118thCongressProject">"Do-nothing" Congress</a>
+                <p>Using data from over 15,000 bills introduced in the 118th Congress, this project trains a model
+                    to predict whether a bill will become law.</p>
+            </li>
+            <li><a href="http://wh33les.github.io/FitbitStatsProject/">Ashley's Fitbit stats</a>
+                <p>This project showcases a selection of my personal fitness data using newly learned d3.js. <a
+                        href="https://github.com/wh33les/FitbitStatsProject">Check out the full project in my GitHub
+                        repository.</a></p>
+            </li>
+            <li><a href="http://wh33les.github.io/538Project/">538 project</a>
+                <p>In one of my earliest Python projects, I wrote a script to scrape metadata from FiveThirtyEight
+                    (538). A key feature of this script is a custom function that renders JavaScript on each page to
+                    extract the number of comments from the Facebook plugin.</p>
+            </li>
+            <li><a
+                    href="https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler">Virtual
+                    inspiring talk</a>
+                <p>YouTube playlist dedicated to promoting early career mathematicians. Presents a project on
+                    matroid varieties I completed in the late 2010s, aimed at an undergrad audience. Originally
+                    hosted on my Mount Holyoke YouTube account, this playlist is the sole content on that channel.
+                    I'm considering moving it to my personal YouTube account to ensure it remains accessible.</p>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/@leyjfk6ify">Personal YouTube channel</a>
+                <p>Calculus I videos I made in spring of 2022. I plan to expand into graduate-level topics, with a
+                    down-to-earth series on cohomology in the works. Stay tuned for more advanced mathematical
+                    content.</p>
+            </li>
+        </ul>    
+    </div>
+	<div id="lastmodified"></div>
+</body>
+
+</html>   
