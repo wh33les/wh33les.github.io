@@ -13,7 +13,7 @@
 	<title>Home | Ashley K. W. Warren</title> 
 	<link rel="stylesheet" href="styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!--Used to recycle code-->
-	<script>
+	<script type="text/javascript">
 		$(function(){
 			$('#lastmodified').load('../lastmodified.html');
 		});
@@ -40,10 +40,17 @@
 					<img src="billywest.jpeg" width=100% alt="Billy West photo">
 					<figcaption>Meeting Billy West at Denver ComicCon, 2024.</figcaption>
 				</figure>
-				<!--<figure>
+				<figure>
 					<img src="centralcasting.jpg" width=100% alt="Central Casting photo">
 					<figcaption><a href="https://www.centralcasting.com/ga/">Central Casting</a> photo, Jun 2022.</figcaption>
-				</figure>-->	
+				</figure>
+				<figure>
+					<img src="pikespeakhusband.jpeg" width=100% alt="Pikes Peak photo">
+					<figcaption>Pikes Peak summit, Sep 2024.</figcaption>
+				</figure>
+				<script>
+					$("figure").eq(Math.floor(Math.random() * 3)).css("display", "block");
+				</script> <!-- Rotates the figures -->	
 			</td>
 			<td valign=top style="padding-left:30px">
 				<!--<p style="margin-top:0px">Welcome to my website!</p>-->
