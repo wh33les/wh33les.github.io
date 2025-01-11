@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description"
+		content="Welcome to the personal website of Ashley K. W. Warren, a mathematician turned machine learning engineer. Explore her professional materials, hobbies, and more.">
+	<meta name="keywords"
+		content="Ashley K. W. Warren, mathematician, machine learning engineer, tutoring, Pikes Peak photo, Colorado Springs, professional materials, Robert B. Warren, author, hobbies">
+	<meta name="author" content="Ashley K. W. Warren">
 	<style>
 		/* To hide the figures on the main page */
 		figure {
-    		display: none;
+			display: none;
 		}
 	</style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100299463-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100299463-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-  gtag('config', 'UA-100299463-1');
-</script>
-	<title>Home | Ashley K. W. Warren</title> 
+		gtag('config', 'UA-100299463-1');
+	</script>
+	<title>Home | Ashley K. W. Warren</title>
 	<link rel="stylesheet" href="styles.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!--Used to recycle code-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!--Used to recycle code-->
 	<script type="text/javascript">
-		$(function(){
+		$(function () {
 			$('#lastmodified').load('../lastmodified.html');
 		});
-	</script> <!--Calls the last modified code-->	
+	</script> <!--Calls the last modified code-->
 	<base target="_blank"> <!-- Opens links in a new tab by default -->
 </head>
 
@@ -36,64 +44,78 @@
 		<div class="buttons">| <a href="../Academia/academia.html" target="_self">Academia</a></div>
 		<div class="buttons">| <a href="../Links/links.html" target="_self">More links</a></div>
 		<!--<div class="buttons">| <a href="../Coding/coding.html" target="_self">Coding notes</a></div>-->
-		
+
 	</div>
-	
-	<div id="aboutme">	
-		<br/>
+
+	<div id="aboutme">
+		<br />
 		<table>
 			<tr>
-			<td width=35%>
-				<figure>
-					<img src="photos/billywest.jpeg" width=100% alt="Billy West photo">
-					<figcaption>Meeting Billy West at Denver ComicCon, Jul 2024.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/centralcasting.jpg" width=100% alt="Central Casting photo">
-					<figcaption><a href="https://www.centralcasting.com/ga/">Central Casting</a> photo, Jun 2022.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/pikespeakhusband.jpeg" width=100% alt="Pikes Peak photo">
-					<figcaption>Pikes Peak summit, Sep 2024.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/newdress.jpg" width=100% alt="new dress photo">
-					<figcaption>Wearing a new dress to work, Feb 2024.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/regalia.jpg" width=100% alt="regalia photo">
-					<figcaption>Opening convocation at Centre College, Aug 2023.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/jobinterview.jpg" width=100% alt="job interview photo">
-					<figcaption>Job interview at Centre College, May 2023.</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/Halloween2022.jpg" width=100% alt="Six Flags Halloween photo">
-					<figcaption>Halloween at Six Flags over Georgia, Oct 2022 (I'm Kamala Harris and Husband is Ezio Auditore).</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/Halloween2023.jpeg" width=100% alt="Halloween party photo">
-					<figcaption>Halloween party, Nov 2023 (I'm Ariana Grande and Husband is A-Train).</figcaption>
-				</figure>
-				<figure>
-					<img src="photos/Halloween2024.png" width=100% alt="Halloween mountain photo">
-					<figcaption>Halloween, Oct 2024 (I'm Joy and Husband is Orville Peck; the dog is Hubie).</figcaption>
-				</figure>
-				<script>
-					$("figure").eq(Math.floor(Math.random() * 9)).css("display", "block");
-				</script> <!-- Rotates the figures.  Found the source to do this at https://stackoverflow.com/questions/24399173/how-to-display-random-parts-of-a-page-on-refresh -->	
-			</td>
-			<td valign=top style="padding-left:30px">
-				<!--<p style="margin-top:0px">Welcome to my website!</p>-->
-				<!--<h2>About me</h2>-->
-				<p>Hi, I’m Ashley K. W. Warren!  I'm a trained mathematician transitioned from academia to data science.  <a href="resumes/WarrenAshley2024resume.pdf"><b>You can view my resum&eacute; here.</b></a>  I also tutor part time.  If you're interested, check out my Academia page for topics.  You can also email me at <a href="mailto:ashleykwwarren@gmail.com">ashleykwwarren@gmail.com</a>.</p>
-				<p>I enjoy knitting, sewing, rollerskating, learning to play bridge, and exploring local breweries. Originally from Colorado Springs, I’ve lived in many places due to my upbringing in a military family and my own career moves. This website serves as a permanent hub for my professional materials, especially as I transition between contracts.</p>
-				<p>My husband, Robert B. Warren, is a published author with experience in graphic design and video production.  <a href="https://www.youtube.com/channel/UCX-p5IRDhF_mmW9HmjSmaww"><b>Check out his YouTube channel!</b></a></p>
-				<p>You can find more about both of us on the More links page.</p>
-				<p><b>Protip: </b>Refresh this homepage to get a randomized picture.  There are a total of 9 possible pictures that can appear!</p>
+				<td width=35%>
+					<figure>
+						<img src="photos/billywest.jpeg" width=100% alt="Billy West photo">
+						<figcaption>Meeting Billy West at Denver ComicCon, Jul 2024.</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/centralcasting.jpg" width=100% alt="Central Casting photo">
+						<figcaption><a href="https://www.centralcasting.com/ga/">Central Casting</a> photo, Jun 2022.
+						</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/pikespeakhusband.jpeg" width=100% alt="Pikes Peak photo">
+						<figcaption>Pikes Peak summit, Sep 2024.</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/newdress.jpg" width=100% alt="new dress photo">
+						<figcaption>Wearing a new dress to work, Feb 2024.</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/regalia.jpg" width=100% alt="regalia photo">
+						<figcaption>Opening convocation at Centre College, Aug 2023.</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/jobinterview.jpg" width=100% alt="job interview photo">
+						<figcaption>Job interview at Centre College, May 2023.</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/Halloween2022.jpg" width=100% alt="Six Flags Halloween photo">
+						<figcaption>Halloween at Six Flags over Georgia, Oct 2022 (I'm Kamala Harris and Husband is Ezio
+							Auditore).</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/Halloween2023.jpeg" width=100% alt="Halloween party photo">
+						<figcaption>Halloween party, Nov 2023 (I'm Ariana Grande and Husband is A-Train).</figcaption>
+					</figure>
+					<figure>
+						<img src="photos/Halloween2024.png" width=100% alt="Halloween mountain photo">
+						<figcaption>Halloween, Oct 2024 (I'm Joy and Husband is Orville Peck; the dog is Hubie).
+						</figcaption>
+					</figure>
+					<script>
+						$("figure").eq(Math.floor(Math.random() * 9)).css("display", "block");
+					</script> <!-- Rotates the figures.  Found the source to do this at https://stackoverflow.com/questions/24399173/how-to-display-random-parts-of-a-page-on-refresh -->
+				</td>
+				<td valign=top style="padding-left:30px">
+					<!--<p style="margin-top:0px">Welcome to my website!</p>-->
+					<!--<h2>About me</h2>-->
+					<p>Hi, I’m Ashley K. W. Warren! I'm a trained mathematician transitioned from academia to machine
+						learning engineering. <a href="resumes/WarrenAshley2025resume.pdf"><b>You can view my
+								resum&eacute; here.</b></a> I also tutor part time. If you're interested, check out my
+						Academia page for topics. You can also email me at <a
+							href="mailto:ashleykwwarren@gmail.com">ashleykwwarren@gmail.com</a>.</p>
+					<p>I enjoy knitting, sewing, rollerskating, learning to play bridge, and exploring local breweries.
+						Originally from Colorado Springs, I’ve lived in many places due to my upbringing in a military
+						family and my own career moves. This website serves as a permanent hub for my professional
+						materials, especially as I transition between contracts.</p>
+					<p>My husband, Robert B. Warren, is a published author with experience in graphic design and video
+						production. <a href="https://www.youtube.com/channel/UCX-p5IRDhF_mmW9HmjSmaww"><b>Check out his
+								YouTube channel!</b></a></p>
+					<p>You can find more about both of us on the More links page.</p>
+					<p><b>Protip: </b>Refresh this homepage to get a randomized picture. There are a total of 9 possible
+						pictures that can appear!</p>
 		</table>
-	</div>	
-	<div id = "lastmodified"></div>
+	</div>
+	<div id="lastmodified"></div>
 </body>
+
 </html>
