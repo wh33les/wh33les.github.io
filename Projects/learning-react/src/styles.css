@@ -82,33 +82,35 @@ ul {
   /* Position relative to allow absolute positioning of the checkmark */
   counter-increment: item;
   /* Increment the counter for each list item */
-  margin: 20px 0;
+  margin: 0px;
   /* Add space between list items */
-  padding-left: 20px;
+  padding-left: 25px;
   /* Add padding to make room for the number */
 }
 
 .checklist li::before {
-  content: counter(item);
-  /* Show the number */
+  content: counter(item)". ";
   position: absolute;
-  /* Position the number absolutely */
+  left: 0;
+  top: 0;
+  transform: translate(60%, 0%);
+}
+
+.checklist li.checked::after {
+  content: "✔️";
+  /* Show the checkmark */
+  position: absolute;
+  /* Position the checkmark absolutely */
   left: 0;
   /* Align to the left */
   top: 0;
   /* Align to the top */
-  font-weight: bold;
-  /* Make the number bold */
-}
-
-.checklist li::after {
-  content: "✔️"; /* Show the checkmark */
-  position: absolute; /* Position the checkmark absolutely */
-  left: 0; /* Align to the left */
-  top: 0; /* Align to the top */
-  color: green; /* Change the color of the checkmark */
-  font-size: 1.2em; /* Adjust the size of the checkmark */
-  transform: translate(-50%, -50%); /* Center the checkmark over the number */
+  color: green;
+  /* Change the color of the checkmark */
+  font-size: 1.2em;
+  /* Adjust the size of the checkmark */
+  transform: translate(5%, -40%);
+  /* Center the checkmark over the number */
 }
 
 .square {
