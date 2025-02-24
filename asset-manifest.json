@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Projects/tic-tac-toe/static/css/main.65d04435.css",
-    "main.js": "/Projects/tic-tac-toe/static/js/main.47cef09e.js",
-    "index.html": "/Projects/tic-tac-toe/index.html",
-    "main.65d04435.css.map": "/Projects/tic-tac-toe/static/css/main.65d04435.css.map",
-    "main.47cef09e.js.map": "/Projects/tic-tac-toe/static/js/main.47cef09e.js.map"
+    "main.css": "/Projects/learning-react/static/css/main.680cea77.css",
+    "main.js": "/Projects/learning-react/static/js/main.47cef09e.js",
+    "index.html": "/Projects/learning-react/index.html",
+    "main.680cea77.css.map": "/Projects/learning-react/static/css/main.680cea77.css.map",
+    "main.47cef09e.js.map": "/Projects/learning-react/static/js/main.47cef09e.js.map"
   },
   "entrypoints": [
-    "static/css/main.65d04435.css",
+    "static/css/main.680cea77.css",
     "static/js/main.47cef09e.js"
   ]
 }
