@@ -2,12 +2,20 @@
   box-sizing: border-box;
 }
 
-body {
+/*body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+}*/
+
+body {
+  background-color: rgb(35 39 47);
+  /* Grabbed from the React tutorial page */
+  font-family: Helvetica;
+  opacity: 0.9;
 }
 
+/*
 h1 {
   margin-top: 0;
   font-size: 22px;
@@ -37,7 +45,38 @@ h6 {
   margin-top: 0;
   font-size: 12px;
 }
+*/
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: Helvetica;
+  color: rgb(35 39 47);
+}
+
+hr {
+  border-color: rgb(35 39 47);
+}
+
+:link {
+  text-decoration: none;
+  color: #4d5aa0;
+}
+
+/* for unvisited links */
+:visited {
+  text-decoration: none;
+  color: #644451;
+}
+
+/* for visited links */
+a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+/* when mouse is over link */
 code {
   font-size: 1.2em;
 }
@@ -46,14 +85,25 @@ ul {
   padding-inline-start: 20px;
 }
 
-* {
-  box-sizing: border-box;
+.bigdiv {
+  background-color: rgb(88 196 220);
+  color: rgb(35 39 47);
+  /*Color grabbed from the React tutorial page*/
+  /*#19181a;*/
+  width: 800px;
+  margin: auto;
+  padding: 18px;
+  /*padding-top:0; */
+  opacity: 1.0;
+  /*border:2px solid #BADA55*/
+  /* bad ass border, for debugging */
+  overflow: hidden;
 }
 
-body {
-  font-family: sans-serif;
-  margin: 20px;
-  padding: 0;
+.jsapp {
+  display: flex;
+  justify-content: center;
+  width: auto;
 }
 
 .square {
@@ -80,6 +130,7 @@ body {
 .status {
   margin-bottom: 10px;
 }
+
 .game {
   display: flex;
   flex-direction: row;
