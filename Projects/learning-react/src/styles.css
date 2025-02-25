@@ -3,9 +3,9 @@
 }*/
 
 body {
-  background-color: rgb(35 39 47);
+  background-color: #0F0D3D;
   /* Grabbed from the React tutorial page */
-  font-family: Helvetica;
+  font-family: Optimistic Display, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   opacity: 0.9;
 }
 
@@ -14,11 +14,11 @@ h2,
 h3,
 h4 {
   font-family: Helvetica;
-  color: rgb(35 39 47);
+  color: rgb(88 196 220);
 }
 
 hr {
-  border-color: rgb(35 39 47);
+  border-color: rgb(88 196 220);
 }
 
 :link {
@@ -48,8 +48,8 @@ ul {
 }
 
 .bigdiv {
-  background-color: rgb(88 196 220);
-  color: rgb(35 39 47);
+  background-color: rgb(35 39 47);
+  color: rgb(88 196 220);
   /*Color grabbed from the React tutorial page*/
   /*#19181a;*/
   width: 800px;
@@ -93,7 +93,7 @@ ul {
   position: absolute;
   left: 0;
   top: 0;
-  transform: translate(60%, 0%);
+  transform: translate(60%, -15%);
 }
 
 .checklist li.checked::after {
@@ -105,7 +105,7 @@ ul {
   /* Align to the left */
   top: 0;
   /* Align to the top */
-  color: green;
+  color: #00ff00 !important;
   /* Change the color of the checkmark */
   font-size: 1.2em;
   /* Adjust the size of the checkmark */
@@ -126,6 +126,12 @@ ul {
   padding: 0;
   text-align: center;
   width: 34px;
+}
+
+.winning-square {
+  background-color: yellow;
+  /* Highlight color */
+  font-weight: bold;
 }
 
 .board-row:after {
