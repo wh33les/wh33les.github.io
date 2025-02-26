@@ -44,7 +44,13 @@ code {
 }
 
 ul {
-  padding-inline-start: 20px;
+  padding-inline-start: 18px;
+}
+
+ul li {
+  margin-top: -12px;
+  margin-bottom: 18px;
+  /* Add space between list items */
 }
 
 .bigdiv {
@@ -145,31 +151,46 @@ ul {
   width: 50px;
 }
 
-.mybutton {
-  background-color: rgb(35 39 47);
-  color: rgb(88 196 220);
-  font-size: 16px;
-  /* Font size */
-  margin: 0px 0px;
-  cursor: pointer;
-  /* Change cursor to pointer on hover */
-  border-radius: 10px;
-  /* Rounded corners */
-  /*  border: 2px;*/
+.mysquare.empty:hover {
+  border: 2px solid rgb(88 196 220);
+  /* Temporary debugging style */
+  background-color: #19181a;
+  /* Change background color on hover */
 }
 
+.mybutton,
 .desc-button {
   background-color: rgb(35 39 47);
   color: rgb(88 196 220);
   font-size: 16px;
-  /* Font size */
   margin: 0px 0px;
-  cursor: pointer;
-  /* Change cursor to pointer on hover */
+  border: 1px solid rgb(88, 196, 220);
+  /* Remove outline */
+}
+
+.mybutton:hover {
+  border: 2px solid rgb(88, 196, 220);
+  /* Use the same border color as the squares */
+  background-color: #19181a;
+  /* Change background color on hover */
+  color: rgb(88, 196, 220);
+  /* Optional: Change text color on hover */
+}
+
+.desc-button {
   border-radius: 0px;
   /* Rounded corners */
-  margin-left: 110px;
+  margin-left: 145px;
   /* Pushes the button to the right */
+}
+
+.desc-button:hover {
+  border: 2px solid rgb(88, 196, 220);
+  /* Use the same border color as the squares */
+  background-color: #19181a;
+  /* Change background color on hover */
+  color: rgb(88, 196, 220);
+  /* Optional: Change text color on hover */
 }
 
 .winning-square {
@@ -193,7 +214,7 @@ ul {
 }
 
 .my-status {
-  margin-bottom: -18px;
+  margin-bottom: -25px;
   text-align: center;
 }
 

@@ -1,8 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Confetti from 'react-confetti';
+
+const xSound = new Audio(process.env.PUBLIC_URL + "/sounds/x.mp3");
+const oSound = new Audio(process.env.PUBLIC_URL + "/sounds/o.mp3");
+const winXSound = new Audio(process.env.PUBLIC_URL + "/sounds/win-x.mp3");
+const winOSound = new Audio(process.env.PUBLIC_URL + "/sounds/win-o.mp3");
+const drawSound = new Audio(process.env.PUBLIC_URL + "/sounds/draw.mp3");
 
 function Square({ value, onSquareClick, isWinningSquare }) {
+  const isEmpty = value === null;  // Check if the square is empty
   return (
-    <button className={`mysquare ${isWinningSquare ? "my-winning-square" : ""}`} onClick={onSquareClick}>
+    <button className={`mysquare ${isWinningSquare ? "my-winning-square" : ""} ${isEmpty ? "empty" : ""}`}
+      onClick={onSquareClick}>
       {value}
     </button>
   );
@@ -31,7 +40,7 @@ function Board({ xIsNext, squares, onPlay, history }) {
   let status;
   if (winningPlayer) {
     status = "Winner: " + winningPlayer;
-  } else if (history.length === 10) {
+  } else if (history.length === 10 && !winningPlayer) {
     status = "Draw!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
@@ -62,12 +71,18 @@ function Board({ xIsNext, squares, onPlay, history }) {
 
 
 export default function Game() {
+  const [showConfetti, setShowConfetti] = useState(false);
+  useEffect(() => {
+    // Preload audio files
+    [xSound, oSound, winXSound, winOSound, drawSound].forEach((sound) => {
+      sound.load();
+    });
+  }, []);
   const [history, setHistory] = useState([{ squares: Array(9).fill(null), position: [null, null] }]);
   const [currentMove, setCurrentMove] = useState(0);
   const [isAscending, setIsAscending] = useState(true); // New state for sorting order
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove]?.squares || Array(9).fill(null);
-
 
   function handlePlay(nextSquares, index) {
     const nextHistory = [
@@ -76,6 +91,22 @@ export default function Game() {
     ];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
+
+    if (xIsNext) {
+      xSound.play(); // Play preloaded sound
+    } else {
+      oSound.play();
+    }
+
+    const [winningPlayer] = calculateWinner(nextSquares);
+
+    if (winningPlayer === "X") {
+      winXSound.play();
+    } else if (winningPlayer === "O") {
+      winOSound.play();
+    } else if (nextHistory.length === 10) {
+      drawSound.play();
+    }
   }
 
   function jumpTo(nextMove) {
@@ -102,7 +133,7 @@ export default function Game() {
     return (
       <li key={move}>
         {move === 0 && move !== history.length - 1 ? (
-          <button class="mybutton" onClick={() => jumpTo(move)}>{description}</button>
+          <button className="mybutton" onClick={() => jumpTo(move)}>{description}</button>
         ) : move === history.length - 1 ? (
           description
         ) : (
@@ -119,15 +150,20 @@ export default function Game() {
     moves.reverse();
   }
 
+  const board = useMemo(() => (
+    <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} history={history} />
+  ), [currentSquares]); // Only re-render when currentSquares changes
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} history={history} />
+        {board}
       </div>
       <div className="my-game-info">
-        <span>History:</span>  <button class="desc-button" onClick={toggleOrder}>
+        <button className="desc-button" onClick={toggleOrder}>
           {isAscending ? "Show Descending" : "Show Ascending"}
         </button>
+        <p><h4><u>History:</u></h4></p>
         <ul>{moves}</ul>
       </div>
     </div>

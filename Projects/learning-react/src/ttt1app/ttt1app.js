@@ -92,7 +92,7 @@ export default function Game() {
 
     // Only show position for moves after the first
     const positionInfo = move > 0 ? ` (Row: ${squareCoords(move)[0]}, Col: ${squareCoords(move)[1]})` : '';
-    const player = move % 2 === 0 ? "X" : "O"; // Determine the player
+    const player = move % 2 === 0 ? "O" : "X"; // Determine the player
 
     return (
       <li key={move}>
