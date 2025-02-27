@@ -256,6 +256,10 @@ ul li {
   /* Adjust space between squares */
 }
 
+.move-info {
+  margin-top: -10px;
+}
+
 .winning-overlay {
   position: absolute;
   top: 0;

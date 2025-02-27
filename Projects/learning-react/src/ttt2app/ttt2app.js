@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import Confetti from 'react-confetti';
 
 const xSound = new Audio(process.env.PUBLIC_URL + "/sounds/x.mp3");
 const oSound = new Audio(process.env.PUBLIC_URL + "/sounds/o.mp3");
@@ -17,22 +16,13 @@ function Square({ value, onSquareClick, isWinningSquare }) {
   );
 }
 
-function Board({ xIsNext, squares, onPlay, history }) {
-  // Log the squares prop to see its structure
-  console.log("Board Squares:", squares);
-
+function Board({ xIsNext, squares, onPlay, history, currentMove }) {
   function handleClick(i) {
-    // Check if squares is valid
-    if (!Array.isArray(squares)) {
-      console.error("Squares is not an array:", squares);
-      return;
-    }
     if (squares[i] || calculateWinner(squares)[0]) {
       return;
     }
     const nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? "X" : "O";
-    console.log("Next squares after click:", nextSquares);
     onPlay(nextSquares, i); // Pass the position to handlePlay
   }
 
@@ -40,7 +30,7 @@ function Board({ xIsNext, squares, onPlay, history }) {
   let status;
   if (winningPlayer) {
     status = "Winner: " + winningPlayer;
-  } else if (history.length === 10 && !winningPlayer) {
+  } else if (currentMove === history.length - 1 && history.length === 10) {
     status = "Draw!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
@@ -71,7 +61,8 @@ function Board({ xIsNext, squares, onPlay, history }) {
 
 
 export default function Game() {
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [selectedMove, setSelectedMove] = useState(null);
+
   useEffect(() => {
     // Preload audio files
     [xSound, oSound, winXSound, winOSound, drawSound].forEach((sound) => {
@@ -111,6 +102,7 @@ export default function Game() {
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
+    setSelectedMove(nextMove);
   }
 
   function toggleOrder() {
@@ -151,8 +143,8 @@ export default function Game() {
   }
 
   const board = useMemo(() => (
-    <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} history={history} />
-  ), [currentSquares]); // Only re-render when currentSquares changes
+    <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} history={history} currentMove={currentMove} />
+  ), [currentSquares, currentMove]); // Add currentMove as a dependency
 
   return (
     <div className="game">
@@ -165,6 +157,11 @@ export default function Game() {
         </button>
         <p><h4><u>History:</u></h4></p>
         <ul>{moves}</ul>
+        {selectedMove !== null && (
+          <p className="move-info">
+            <i><b>(restarted at move #{selectedMove})</b></i>
+          </p>
+        )}
       </div>
     </div>
   );

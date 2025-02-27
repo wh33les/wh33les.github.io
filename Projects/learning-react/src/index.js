@@ -18,3 +18,4 @@ rootttt2.render(
     <App2 />
   </StrictMode>
 );
+
