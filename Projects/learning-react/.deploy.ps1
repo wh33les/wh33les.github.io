@@ -9,6 +9,12 @@ if (-Not (Test-Path ".\build")) {
     exit 1
 }
 
+# Delete the old build files 
+Remove-Item -Path ".\static" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\sounds" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\asset-manifest.json" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\index.html" -Force -ErrorAction SilentlyContinue
+
 # Move the contents of the build folder to the learning-react directory
 Move-Item -Path ".\build\*" -Destination "." -Force
 
