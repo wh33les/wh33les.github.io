@@ -3,6 +3,12 @@
 # Build the project
 npm run build
 
+# Ensure the build output is available before proceeding
+if (-Not (Test-Path ".\build")) {
+    Write-Host "Build failed or build directory missing."
+    exit 1
+}
+
 # Move the contents of the build folder to the learning-react directory
 Move-Item -Path ".\build\*" -Destination "." -Force
 
