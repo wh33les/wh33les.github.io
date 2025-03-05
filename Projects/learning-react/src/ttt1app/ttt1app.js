@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./app1styles.css";
 
 function Square({ value, onSquareClick, isWinningSquare }) {
   return (
@@ -100,16 +101,16 @@ export default function Game() {
           <button onClick={() => jumpTo(move)}>{description}</button>
         ) : move === 0 && move === history.length - 1 ? (
           description
-        ) 
-        : move === history.length - 1 && move != 0 ? (
-        <>
-          {description} ({player}: Row {lastPosition[0] + 1}, Col {lastPosition[1] + 1})
-        </>
-        ) : (
-        <>
-          <button onClick={() => jumpTo(move)}>{description}</button> ({player}: Row {lastPosition[0] + 1}, Col {lastPosition[1] + 1})
-        </>
         )
+          : move === history.length - 1 && move != 0 ? (
+            <>
+              {description} ({player}: Row {lastPosition[0] + 1}, Col {lastPosition[1] + 1})
+            </>
+          ) : (
+            <>
+              <button onClick={() => jumpTo(move)}>{description}</button> ({player}: Row {lastPosition[0] + 1}, Col {lastPosition[1] + 1})
+            </>
+          )
         }
       </li>
     );

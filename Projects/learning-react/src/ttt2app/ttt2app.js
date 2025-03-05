@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import "./app2styles.css";
 
 const xSound = new Audio(process.env.PUBLIC_URL + "/sounds/x.mp3");
 const oSound = new Audio(process.env.PUBLIC_URL + "/sounds/o.mp3");
