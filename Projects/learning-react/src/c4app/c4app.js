@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./c4appstyles.css";
 
+const pieceSound = new Audio(process.env.PUBLIC_URL + "/sounds/piece.mp3");
+const winXSound = new Audio(process.env.PUBLIC_URL + "/sounds/win-x.mp3");
+const winOSound = new Audio(process.env.PUBLIC_URL + "/sounds/win-o.mp3");
+
 const ROWS = 6;
 const COLS = 7;
 
@@ -13,6 +17,8 @@ const ConnectFour = () => {
     const dropPiece = (col) => {
         if (winner) return; // Prevent moves after a win
 
+        [winXSound, winOSound, pieceSound].forEach((sound) => sound.load());
+
         // Find the lowest empty row in the column
         for (let row = ROWS - 1; row >= 0; row--) {
             if (!board[row][col]) {
@@ -20,16 +26,22 @@ const ConnectFour = () => {
                 const newBoard = board.map((r) => [...r]);
                 newBoard[row][col] = currentPlayer;
                 setBoard(newBoard);
+                pieceSound.play();
 
                 if (checkWinner(newBoard, row, col, currentPlayer)) {
                     setWinner(currentPlayer);
-                } else {
-                    setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
+                    if (winner === "red") {
+                        winXSound.play();
+                    } else if (winner === "yellow") {
+                        winOSound.play();
+                    }
                 }
+
+                setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
                 return;
             }
         }
-    };
+    }
 
     const checkWinner = (board, row, col, player) => {
         // Directions: Horizontal, Vertical, Diagonal /
