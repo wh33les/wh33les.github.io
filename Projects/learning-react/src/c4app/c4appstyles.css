@@ -1,0 +1,85 @@
+.c4board {
+    display: grid;
+    grid-template-rows: repeat(6, 50px);
+    gap: 5px;
+    background-color: rgb(88 196 220);
+    padding: 5px 5px 10px 5px;
+    /* Increase bottom padding */
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(35 39 47);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*cursor: pointer;*/
+    margin: 3px
+}
+
+.cell.red {
+    background-color: red;
+}
+
+.cell.yellow {
+    background-color: yellow;
+}
+
+.cell.hovered {
+    background-color: #19181a;
+}
+
+.c4-status {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.c4-button {
+    background-color: rgb(35 39 47);
+    color: rgb(88 196 220);
+    font-size: 16px;
+    margin: 0px 0px;
+    border: 1px solid rgb(88, 196, 220);
+    /* Remove outline */
+    border-radius: 0px;
+    /* Rounded corners */
+    margin-left: 290px;
+    margin-top: 8px;
+    /* Pushes the button to the right */
+}
+
+.c4-button:hover {
+    border: 2px solid rgb(88, 196, 220);
+    /* Use the same border color as the squares */
+    background-color: #19181a;
+    /* Change background color on hover */
+    color: rgb(88, 196, 220);
+    /* Optional: Change text color on hover */
+}
+
+/* Falling piece animation */
+.falling-piece {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: transform 0.1s ease-in;
+    transform: translateY(calc(var(--fall-to) * 55px));
+    /* Adjust for grid row height */
+}
+
+.falling-piece.red {
+    background-color: red;
+}
+
+.falling-piece.yellow {
+    background-color: yellow;
+}
