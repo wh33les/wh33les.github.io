@@ -1,5 +1,6 @@
 .c4board {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-rows: repeat(6, 50px);
     gap: 5px;
     background-color: rgb(88 196 220);
@@ -7,6 +8,8 @@
     /* Increase bottom padding */
     border-radius: 10px;
     width: fit-content;
+    position: relative;
+    /* Ensures that board is positioned correctly */
 }
 
 .row {
@@ -21,7 +24,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /*cursor: pointer;*/
     margin: 3px
 }
 
@@ -51,9 +53,13 @@
     /* Remove outline */
     border-radius: 0px;
     /* Rounded corners */
-    margin-left: 290px;
+    margin-left: 287px;
     margin-top: 8px;
     /* Pushes the button to the right */
+    width: 115px;
+    /* Set a fixed width to prevent reflow */
+    height: 23px;
+    /* Set a fixed height */
 }
 
 .c4-button:hover {
@@ -63,23 +69,4 @@
     /* Change background color on hover */
     color: rgb(88, 196, 220);
     /* Optional: Change text color on hover */
-}
-
-/* Falling piece animation */
-.falling-piece {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    transition: transform 0.1s ease-in;
-    transform: translateY(calc(var(--fall-to) * 55px));
-    /* Adjust for grid row height */
-}
-
-.falling-piece.red {
-    background-color: red;
-}
-
-.falling-piece.yellow {
-    background-color: yellow;
 }

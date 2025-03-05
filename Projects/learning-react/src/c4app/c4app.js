@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./c4appstyles.css";
 
 const ROWS = 6;
@@ -16,18 +16,16 @@ const ConnectFour = () => {
         // Find the lowest empty row in the column
         for (let row = ROWS - 1; row >= 0; row--) {
             if (!board[row][col]) {
-                // Place the piece on the board
+                // Place the piece on the board immediately
                 const newBoard = board.map((r) => [...r]);
                 newBoard[row][col] = currentPlayer;
                 setBoard(newBoard);
 
-                // Check for a winner
                 if (checkWinner(newBoard, row, col, currentPlayer)) {
                     setWinner(currentPlayer);
                 } else {
                     setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
                 }
-
                 return;
             }
         }
