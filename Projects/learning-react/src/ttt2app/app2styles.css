@@ -41,7 +41,7 @@
 }
 
 .mybutton:hover {
-    border: 2px solid rgb(88, 196, 220);
+    border: 1px solid rgb(88, 196, 220);
     /* Use the same border color as the squares */
     background-color: #19181a;
     /* Change background color on hover */
@@ -57,7 +57,7 @@
 }
 
 .desc-button:hover {
-    border: 2px solid rgb(88, 196, 220);
+    border: 1px solid rgb(88, 196, 220);
     /* Use the same border color as the squares */
     background-color: #19181a;
     /* Change background color on hover */
