@@ -30,9 +30,9 @@ const ConnectFour = () => {
 
                 if (checkWinner(newBoard, row, col, currentPlayer)) {
                     setWinner(currentPlayer);
-                    if (winner === "red") {
+                    if (currentPlayer === "red") {
                         winXSound.play();
-                    } else if (winner === "yellow") {
+                    } else if (currentPlayer === "yellow") {
                         winOSound.play();
                     }
                 }
