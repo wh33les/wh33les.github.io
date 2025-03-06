@@ -76,6 +76,12 @@
   </div>
 
   <div id="lastmodified" class="bigdiv"></div>
+
+  <script>
+    var date = document.lastModified;
+    var lastModifiedDate = new Date(date);
+    document.getElementById("lastmodified").innerHTML = "<hr><i>Last modified: </i>" + lastModifiedDate.toLocaleString();
+  </script>
 </body>
 
 </html>
