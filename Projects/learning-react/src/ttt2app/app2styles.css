@@ -81,15 +81,16 @@
     height: 200px;
     overflow: visible;
     /* Ensure ellipses aren't clipped */
+    margin-right: -30px;
 }
 
 .my-status {
     margin-bottom: -25px;
     text-align: center;
+    margin-right: -30px;
 }
 
 .my-game-info {
-    /*margin-left: 20px;*/
     width: 350px;
     /* Adjust width as needed */
     min-height: 300px;
