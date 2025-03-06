@@ -24,6 +24,11 @@
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Needed for the Last Modified script -->
+  <script>
+    $(function () {
+      $('#lastmodified').load('../../lastmodified.html');
+    });
+  </script>
 </head>
 
 <body>
@@ -71,11 +76,6 @@
   </div>
 
   <div id="lastmodified" class="bigdiv"></div>
-  <script>
-    $(function () {
-      $('#lastmodified').load('../../lastmodified.html');
-    });
-  </script>
 </body>
 
 </html>
