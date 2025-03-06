@@ -40,8 +40,10 @@
 }
 
 .c4-status {
+    display: flex;
     margin-bottom: 0px;
-    text-align: center;
+    justify-content: center;
+    /* Centers horizontally */
 }
 
 .c4-button {
@@ -53,7 +55,7 @@
     /* Remove outline */
     border-radius: 0px;
     /* Rounded corners */
-    margin-left: 289px;
+    margin-left: 290px;
     margin-top: 8px;
 }
 
@@ -64,4 +66,30 @@
     /* Change background color on hover */
     color: rgb(88, 196, 220);
     /* Optional: Change text color on hover */
+}
+
+.piece {
+    display: inline-block;
+    width: 20px;
+    /* Adjust size as needed */
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.player-indicator {
+    display: flex;
+    align-items: center;
+    /* Ensures vertical alignment */
+    gap: 5px;
+    /* Adds spacing between text and circle */
 }

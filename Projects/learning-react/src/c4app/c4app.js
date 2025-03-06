@@ -13,27 +13,31 @@ const ConnectFour = () => {
     const [currentPlayer, setCurrentPlayer] = useState("red");
     const [winner, setWinner] = useState(null);
     const [hoveredCol, setHoveredCol] = useState(null);
+    const [winningCells, setWinningCells] = useState([]);
 
     const dropPiece = (col) => {
         if (winner) return; // Prevent moves after a win
 
-        [winXSound, winOSound, pieceSound].forEach((sound) => sound.load());
-
-        // Find the lowest empty row in the column
         for (let row = ROWS - 1; row >= 0; row--) {
             if (!board[row][col]) {
-                // Place the piece on the board immediately
                 const newBoard = board.map((r) => [...r]);
                 newBoard[row][col] = currentPlayer;
                 setBoard(newBoard);
-                pieceSound.play();
 
-                if (checkWinner(newBoard, row, col, currentPlayer)) {
+                // Play sound with a fresh instance
+                const pieceSoundInstance = new Audio(pieceSound.src);
+                pieceSoundInstance.play();
+
+                const winPositions = checkWinner(newBoard, row, col, currentPlayer);
+                if (winPositions) {
                     setWinner(currentPlayer);
+                    setWinningCells(winPositions);
                     if (currentPlayer === "red") {
-                        winXSound.play();
-                    } else if (currentPlayer === "yellow") {
-                        winOSound.play();
+                        const winXSoundInstance = new Audio(winXSound.src);
+                        winXSoundInstance.play();
+                    } else {
+                        const winOSoundInstance = new Audio(winOSound.src);
+                        winOSoundInstance.play();
                     }
                 }
 
@@ -41,10 +45,10 @@ const ConnectFour = () => {
                 return;
             }
         }
-    }
+    };
+
 
     const checkWinner = (board, row, col, player) => {
-        // Directions: Horizontal, Vertical, Diagonal /
         const directions = [
             [[0, 1], [0, -1]],   // Horizontal
             [[1, 0], [-1, 0]],   // Vertical
@@ -54,23 +58,37 @@ const ConnectFour = () => {
 
         for (let [[dr1, dc1], [dr2, dc2]] of directions) {
             let count = 1;
+            let winningCells = [[row, col]]; // Start with the current piece
+
             for (let [dr, dc] of [[dr1, dc1], [dr2, dc2]]) {
                 let r = row + dr, c = col + dc;
                 while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+                    winningCells.push([r, c]);
                     count++;
                     r += dr;
                     c += dc;
                 }
             }
-            if (count >= 4) return true; // Win condition
+            if (count >= 4) {
+                return winningCells; // Return winning coordinates
+            }
         }
-        return false;
+        return null;
     };
+
 
     return (
         <div>
             <div className="c4-status"><h3>
-                {winner ? `Winner: ${winner.toUpperCase()}` : `Next player: ${currentPlayer.toUpperCase()}`}
+                {winner ? (
+                    <span className="player-indicator">
+                        Winner: <span className={`piece ${winner}`}></span>
+                    </span>
+                ) : (
+                    <span className="player-indicator">
+                        Next player: <span className={`piece ${currentPlayer}`}></span>
+                    </span>
+                )}
             </h3></div>
             <div className="c4board">
                 {board.map((row, rowIndex) => (
@@ -88,7 +106,9 @@ const ConnectFour = () => {
                                     onClick={() => dropPiece(colIndex)}
                                 >
                                     {/* Just render the pieces already placed */}
+                                    {/* Render the piece and apply the "winning" class if it's a winning cell */}
                                     {cell && <div className={`piece ${cell}`}></div>}
+
                                 </div>
                             );
                         })}
