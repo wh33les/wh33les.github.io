@@ -1,8 +1,9 @@
-/* JavaScript used on all the pages (not including the home page) */
-$(function(){
+/* JavaScript used on all the main pages */
+
+$(function () {
 	$('#header').load('../pagesheader.html');
 }); /* Calls the header code */
-$(function(){
+$(function () {
 	$('#lastmodified').load('../lastmodified.html');
 }); /* Calls the last modified code */
 function toggleShowHide(elementId) {

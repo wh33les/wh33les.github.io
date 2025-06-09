@@ -75,3 +75,31 @@ figure {
 li p {
 	margin-top: 5px;
 }
+
+#photo-rotator-container {
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+	margin-top: 25px;
+	padding: 0;
+}
+
+#photo-rotator-container img {
+	max-width: 100% !important;
+	height: auto !important;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+#photo-rotator-container figure {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Ensure the table itself doesn't add extra spacing */
+#aboutme table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
