@@ -48,8 +48,7 @@ function PhotoRotator() {
 
 // Function to initialize the component
 function initPhotoRotator() {
-    ReactDOM.render(
-        React.createElement(PhotoRotator),
-        document.getElementById('photo-rotator-container')
-    );
+    const container = document.getElementById('photo-rotator-container');
+    const root = ReactDOM.createRoot(container);
+    root.render(React.createElement(PhotoRotator));
 }
