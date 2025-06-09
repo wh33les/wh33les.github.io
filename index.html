@@ -29,21 +29,22 @@
 	<link rel="stylesheet" href="styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<!--Used to recycle code-->
-	<script>
-		$(function () {
-			$('#header').load('pagesheader.html');
-		});
-	</script> <!--Calls the header code-->
 	<script type="text/javascript">
 		$(function () {
 			$('#lastmodified').load('../lastmodified.html');
 		});
 	</script> <!--Calls the last modified code-->
-	<base target="_blank">
+	<base target="_blank"> <!-- Opens links in a new tab by default -->
 </head>
 
 <body>
-	<div id="header"></div>
+	<div id="header">
+		<h1> Ashley K. W. Warren </h1>
+		<hr>
+		<div class="buttons">| <a href="../Projects/projects.html" target="_self">Projects</a></div>
+		<div class="buttons">| <a href="../Academia/academia.html" target="_self">Academia</a></div>
+		<div class="buttons">| <a href="../Links/links.html" target="_self">More links</a></div>
+	</div>
 
 	<div id="aboutme">
 		<br />
