@@ -15,7 +15,7 @@ const Project = ({
             <table>
                 <tr>
                     <td className="project-thumbnail">
-                        <a href={projectUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={projectUrl} target="_self" rel="noopener noreferrer">
                             <img
                                 src={thumbnailSrc}
                                 alt={`${title} thumbnail`}
@@ -24,7 +24,7 @@ const Project = ({
                     </td>
                     <td>
                         <h3>
-                            <a href={projectUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={projectUrl} target="_self" rel="noopener noreferrer">
                                 {title}
                             </a>
                             {' '}({date}).

@@ -1,0 +1,30 @@
+<!--Header for project subdomains - customize h1 and back link for each project -->
+<h1 id="project-title">Project Title</h1> <!-- Customize this for each project -->
+<hr>
+
+<div class="buttons" style="text-align:center;">
+    <a href="https://wh33les.github.io/Projects/projects.html" id="back-link">← Back to Projects</a>
+</div>
+
+<script>
+    // Set the back link to open in same tab 
+    $('#back-link').attr('target', '_self');
+
+    // Optional: Auto-set title based on page
+    const projectTitles = {
+        'husbandsgames': "Husband's games",
+        'learningreact': "Learning React",
+        'housingprices': "Housing prices",
+        'electionforecast': "2024 election forecast",
+        'fitbitstatsproject': "Ashley's FitBit stats",
+        '538project': "538 project"
+    };
+
+    // Try to detect project from URL and set title
+    const currentDomain = window.location.hostname.toLowerCase();
+    const subdomain = currentDomain.split('.')[0];
+
+    if (projectTitles[subdomain]) {
+        $('#project-title').text(projectTitles[subdomain]);
+    }
+</script>
