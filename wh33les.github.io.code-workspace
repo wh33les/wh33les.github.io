@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"name": "wh33les.github.io",
+			"path": "."
+		},
+		{
+			"name": "HusbandsGames",
+			"path": "../HusbandsGames"
+		},
+		{
+			"name": "LearningReact",
+			"path": "../LearningReact"
+		},
+		{
+			"name": "2024ElectionForecast",
+			"path": "../2024ElectionForecast"
+		},
+		{
+			"name": "FitbitStatsProject",
+			"path": "../FitbitStatsProject"
+		},
+		{
+			"name": "538Project",
+			"path": "../538Project"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "wh33les.github.io"
+	}
+}

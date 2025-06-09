@@ -21,6 +21,7 @@
     <title>Projects | Ashley K. W. Warren</title>
     <link rel="icon" type="image/x-icon" href="../photos/jobinterview.ico">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="projects.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!--Used to recycle code-->
     <script type="text/javascript" src="../pagesjavascript.js"></script> <!-- Other JavaScript from a file -->
@@ -34,224 +35,36 @@
             $('#lastmodified').load('../lastmodified.html');
         });
     </script> <!--Calls the last modified code-->
+
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <base target="_blank"> <!-- Opens links in a new tab by default -->
-    <style>
-        table {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        img {
-            width: 150px;
-        }
-
-        img:hover {
-            border: 1px solid #19181a;
-        }
-
-        .project-thumbnail {
-            width: 23%;
-            height: 135px;
-            vertical-align: top;
-            padding-right: -25px;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Use same header structure as other pages -->
     <div id="header"></div>
+
+    <!-- Use same div structure as your homepage for consistent margins -->
     <div>
         <h2>Projects</h2>
         <p>The source for all my projects can be found in my <a
                 href="https://github.com/wh33les?tab=repositories">GitHub repositories,</a> including a repository with
             the source for this website.</p>
+
+        <!-- React will render here -->
+        <div id="projects-root"></div>
     </div>
-    <div>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="../HusbandsGames"><img src="projectthumbnails/husbandsgames.png"></a>
-                </td>
-                <td>
 
-                    <h3><a href="../Projects/HusbandsGames">Husband's games</a> (Jun 2025 and in progress).</h3>
+    <!-- Load your projects data -->
+    <script type="text/babel" src="projectsData.js"></script>
 
-                    <p>A work in progress. A database of Husband's video games. More functionality (and games!) to come.
-                    </p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="/learning-react"><img src="projectthumbnails/tictactoe.png"></a>
-                </td>
-                <td>
+    <!-- Load React components -->
+    <script type="text/babel" src="projectsComponents.js"></script>
 
-                    <h3><a href="../Projects/HusbandsGames">Learning React</a> (Mar 2025).</h3>
-
-                    <p>For my longer term Husband's games project, I wanted to learn React. <a
-                            href="https://react.dev/learn/tutorial-tic-tac-toe">Here is the React tutorial's
-                            tic-tac-toe,</a> followed by where I ran with it.
-                    </p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-
-                    <a href="https://github.com/wh33les/HousingPrices"><img
-                            src="projectthumbnails/housingprices.png"></a>
-                </td>
-                <td>
-
-                    <h3><a href="https://github.com/wh33les/HousingPrices">Housing prices</a> (Jan 2025).</h3>
-
-                    <p><a
-                            href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview">Kaggle
-                            competition to predict housing prices given 79 features.</a>
-                        First submission ranked in the 82nd percentile out of over 28,000 submissions!
-                    </p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="https://wh33les.github.io/2024ElectionForecast/"><img
-                            src="projectthumbnails/electionforecast.png"></a>
-                </td>
-                <td>
-                    <h3><a href="https://wh33les.github.io/2024ElectionForecast/">2024 election forecast</a> (Nov 2024).
-                    </h3>
-                    <p>Forecasts, on each day leading up to the 2024
-                        U.S. presidential election, who will win.
-                        Predictions made using <a
-                            href="https://projects.fivethirtyeight.com/polls/data/president_polls.csv">this
-                            polling data
-                            from 538</a>, along with 538's polling averages for swing states, <a
-                            href="https://projects.fivethirtyeight.com/2024-election-forecast/">found on
-                            this page</a>.</p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a
-                        href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/BiasvReliability/BiasvsReliability"><img
-                            src="projectthumbnails/mediareliability.png"></a>
-                </td>
-                <td>
-                    <h3><a
-                            href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/BiasvReliability/BiasvsReliability">Media
-                            bias vs. reliability</a> (Sep 2024).</h3>
-                    <p>Political bias (left/right) of around 800 news media
-                        sources against
-                        their reliability ratings, according to Ad Fontes Media. The data was scraped using
-                        Python and
-                        plotted using Tableau.
-                    </p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a
-                        href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/2024U_S_PresidentialElection_Pollingaveragesovertimeforthe2majorparties/Presentation"><img
-                            src="projectthumbnails/polls.png"></a>
-                </td>
-                <td>
-                    <h3><a
-                            href="https://public.tableau.com/app/profile/ashley.k.w.warren/viz/2024U_S_PresidentialElection_Pollingaveragesovertimeforthe2majorparties/Presentation">2024
-                            U.S. presidential election</a> (Aug 2024).</h3>
-                    <p>Analyzed <a href="https://projects.fivethirtyeight.com/polls/data/president_polls.csv">over
-                            4,000 polls
-                            spanning three years of data from 538.</a> Daily rolling averages
-                        for Donald Trump,
-                        Kamala Harris, and Joe Biden, covering the period from April 7, 2021, to August 11,
-                        2024 (periodic
-                        updates since then). Toggle between polling data for likely
-                        voters, registered
-                        voters, and all voters.</p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="https://github.com/wh33les/118thCongressProject"><img
-                            src="projectthumbnails/118thcongress.png"></a>
-                </td>
-                <td>
-                    <h3><a href="https://github.com/wh33les/118thCongressProject">"Do-nothing" congress</a> (Jun 2024).
-                    </h3>
-                    <p>Using data from over 15,000 bills introduced in the 118th Congress, this project
-                        trains a
-                        model
-                        to predict whether a bill will become law. Model outperforms the baseline accuracy
-                        of 99.6%
-                        (where the baseline predicts no bill will become law).</p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="http://wh33les.github.io/FitbitStatsProject/"><img
-                            src="projectthumbnails/fitbitstats.png"></a>
-                </td>
-                <td>
-                    <h3><a href="http://wh33les.github.io/FitbitStatsProject/">Ashley's FitBit stats</a> (Apr 2023).
-                    </h3>
-                    <p>One year's worth of my FitBit data showing exercise and its impact on my sleep.
-                        Dashboard made using d3.js. </p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a href="http://wh33les.github.io/538Project/"><img src="projectthumbnails/538project.png"></a>
-                </td>
-                <td>
-                    <h3><a href="http://wh33les.github.io/538Project/">538 project</a> (Mar 2023).</h3>
-                    <p>Python script to scrape metadata from 538. A key feature of this script is a custom
-                        function that renders JavaScript on each page to extract the number of comments from
-                        the Facebook plugin.</p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td class="project-thumbnail">
-                    <a
-                        href="https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler"><img
-                            src="projectthumbnails/vit.png"></a>
-                </td>
-                <td>
-                    <h3><a
-                            href="https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler">Vitrual
-                            inspiring talk</a> (Nov 2020).</h3>
-                    <p>YouTube playlist dedicated to promoting early career mathematicians. Presents a
-                        project on
-                        matroid varieties I completed in the late 2010s, aimed at an undergrad audience.</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-    </div>
     <div id="lastmodified"></div>
 </body>
 

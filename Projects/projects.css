@@ -1,0 +1,27 @@
+/* Style the container that holds the projects */
+#projects-root {
+    position: relative;
+    left: -35px;
+    width: calc(100% + 35px);
+}
+
+table {
+    width: 100%;
+}
+
+img {
+    width: 150px;
+}
+
+img:hover {
+    border: 1px solid #19181a;
+}
+
+.project-thumbnail {
+    width: 180px;
+    height: 135px;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
