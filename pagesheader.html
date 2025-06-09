@@ -1,11 +1,48 @@
-<!--Header for all of my pages except the home page, which doesn't have the Home button. -->
+<!--Header for all pages - shows all nav with blank space for current page -->
 <h1>Ashley K. W. Warren </h1>
 <hr>
 
-<div class="buttons">| <a href="../Projects/projects.html" target="_self">Projects</a></div>
-<div class="buttons">| <a href="../Academia/academia.html" target="_self">Academia</a></div>
-<div class="buttons">| <a href="../Links/links.html" target="_self">More links</a></div>
-<!--<div class="buttons">| <a href="../Coding/coding.html" target="_self">Coding notes</a></div>-->
-<div class="buttons" style="text-align:right; float:right"><a href="../index.html" target="_self">Home</a> |</div>
+<div class="buttons projects-nav">| <a href="../Projects/projects.html">Projects</a></div>
+<div class="buttons academia-nav">| <a href="../Academia/academia.html">Academia</a></div>
+<div class="buttons links-nav">| <a href="../Links/links.html">More links</a></div>
+<!--<div class="buttons">| <a href="../Coding/coding.html">Coding notes</a></div>-->
+<div class="buttons home-nav" style="text-align:right; float:right"><a href="../index.html">Home</a> |</div>
 
+<script>
+    const currentPath = window.location.pathname;
+    $('.buttons a').attr('target', '_self');
+    // Define page mappings - easy to add new pages here
+    const pages = [
+        {
+            // Homepage: exact match only
+            condition: currentPath.endsWith('/index.html'),
+            selector: '.home-nav',
+            replacement: '<b>Home </b>|'
+        },
+        {
+            // Projects: folder or filename match
+            condition: currentPath.endsWith('projects.html'),
+            selector: '.projects-nav',
+            replacement: '| <b>Projects</b>'
+        },
+        {
+            // Academia: folder or filename match
+            condition: currentPath.endsWith('academia.html'),
+            selector: '.academia-nav',
+            replacement: '| <b>Academia</b>'
+        },
+        {
+            // Links: folder or filename match
+            condition: currentPath.endsWith('links.html'),
+            selector: '.links-nav',
+            replacement: '| <b>More links</b>'
+        }
+    ];
 
+    // Find and replace current page's navigation with blank space
+    pages.forEach(page => {
+        if (page.condition) {
+            $(page.selector).html(page.replacement);
+        }
+    });
+</script>
