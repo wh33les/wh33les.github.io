@@ -8,14 +8,22 @@ const Project = ({
     title,
     date,
     description,
+    sameTab = false,
     isLast = false
 }) => {
+    const linkTarget = sameTab ? "_self" : "_blank";
+    const linkRel = sameTab ? "" : "noopener noreferrer";
+
     return (
         <>
             <table>
                 <tr>
                     <td className="project-thumbnail">
-                        <a href={projectUrl} target="_self" rel="noopener noreferrer">
+                        <a
+                            href={projectUrl}
+                            target={linkTarget}
+                            rel={linkRel}
+                        >
                             <img
                                 src={thumbnailSrc}
                                 alt={`${title} thumbnail`}
@@ -24,7 +32,11 @@ const Project = ({
                     </td>
                     <td>
                         <h3>
-                            <a href={projectUrl} target="_self" rel="noopener noreferrer">
+                            <a
+                                href={projectUrl}
+                                target={linkTarget}
+                                rel={linkRel}
+                            >
                                 {title}
                             </a>
                             {' '}({date}).
@@ -50,6 +62,7 @@ const ProjectsList = () => {
                     title={project.title}
                     date={project.date}
                     description={project.description}
+                    sameTab={project.sameTab}
                     isLast={index === window.projectsData.length - 1}
                 />
             ))}
