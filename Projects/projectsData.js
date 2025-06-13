@@ -18,10 +18,10 @@ window.projectsData = [
         description: (
             <p>
                 For my longer term Husband's games project, I wanted to learn React.{' '}
-                < a href="https://react.dev/learn/tutorial-tic-tac-toe" target="_blank" rel="noopener noreferrer" >
+                < a href="https://react.dev/learn/tutorial-tic-tac-toe" rel="noopener noreferrer" >
                     Here is the React tutorial's tic-tac-toe.
                 </ a > {' '}
-                see where I went with it!
+                See where I went with it!
             </p>
         ),
         sameTab: true  // This will open in same tab
@@ -36,7 +36,6 @@ window.projectsData = [
             <p>
                 <a
                     href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview"
-                    target="_blank"
                     rel="noopener noreferrer"
                 >
                     Kaggle competition to predict housing prices given 79 features.
