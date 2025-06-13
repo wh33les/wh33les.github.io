@@ -5,7 +5,7 @@ window.projectsData = [
         thumbnailSrc: "projectthumbnails/husbandsgames.png",
         projectUrl: "https://wh33les.github.io/HusbandsGames",
         title: "Husband's games",
-        date: "Jun 2025 and in progress",
+        date: "Jun 2025 (and in progress)",
         description: <p>A work in progress.  A database of Husband's video games.  More functionality (and games!) to come.</p>,
         sameTab: true  // This will open in same tab
     },
@@ -31,7 +31,7 @@ window.projectsData = [
         thumbnailSrc: "projectthumbnails/housingprices.png",
         projectUrl: "https://github.com/wh33les/housing-prices-prediction",
         title: "Housing prices",
-        date: "Jan 2025",
+        date: "Jan 2025 (update: Jun 2025)",
         description: (
             <p>
                 <a
