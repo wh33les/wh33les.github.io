@@ -48,13 +48,13 @@ window.projectsData = [
     {
         id: 4,
         thumbnailSrc: "projectthumbnails/electionforecast.png",
-        projectUrl: "https://wh33les.github.io/2024ElectionForecast/",
-        title: "2024 election forecast",
+        projectUrl: "https://wh33les.github.io/us-election-forecast-2024/",
+        title: "2024 U.S. presidential election forecast",
         date: "Nov 2024",
         description: (
             <p>
-                Forecasts, on each day leading up to the 2024 U.S.presidential election, who will win.
-                Predictions made using polling data from fivethirtyeight, along with FiveThirtyEight's polling averages for swing states (links to election data on FiveThirtyEight no longer exist).
+                Forecasts, on each day leading up to the 2024 U.S. presidential election, who will win.
+                Predictions made using polling data from FiveThirtyEight, along with FiveThirtyEight's polling averages for swing states.
             </p>
         ),
         sameTab: true  // This will open in same tab
