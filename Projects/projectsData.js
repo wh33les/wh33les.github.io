@@ -60,6 +60,19 @@ window.projectsData = [
         sameTab: true  // This will open in same tab
     },
     {
+        id: 5,
+        thumbnailSrc: "projectthumbnails/polls.png",
+        projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/rolling-polling-trends/2024PresidentialRaceMulti-ResolutionPollingAnalysis?publish=yes",
+        title: '2024 Presidential Race: Multi-Resolution Polling Analysis',
+        date: "Aug 2024 (updated Jun 2025)",
+        description: (
+            <p>
+                Data from FiveThirtyEight -- presidential election polling trends from April 7 2021 to November 4 2024.  Toggle between voting populations and regions.  Dashboard made using Tableau.
+            </p>
+        )
+        // Tableau - keep in new tab
+    },
+    {
         id: 7,
         thumbnailSrc: "projectthumbnails/118thcongress.png",
         projectUrl: "https://github.com/wh33les/118thCongressProject",
