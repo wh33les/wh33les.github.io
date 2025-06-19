@@ -63,8 +63,8 @@ window.projectsData = [
         id: 5,
         thumbnailSrc: "projectthumbnails/polls.png",
         projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/rolling-polling-trends/2024PresidentialRaceMulti-ResolutionPollingAnalysis?publish=yes",
-        title: '2024 Presidential Race: Multi-Resolution Polling Analysis',
-        date: "Aug 2024 (updated Jun 2025)",
+        title: '2024 presidential race: multi-resolution polling analysis',
+        date: "Aug 2024 (update: Jun 2025)",
         description: (
             <p>
                 Data from FiveThirtyEight -- presidential election polling trends from April 7 2021 to November 4 2024.  Toggle between voting populations and regions.  Dashboard made using Tableau.
