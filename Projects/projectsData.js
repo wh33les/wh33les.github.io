@@ -50,7 +50,7 @@ window.projectsData = [
         thumbnailSrc: "projectthumbnails/electionforecast.png",
         projectUrl: "https://wh33les.github.io/us-election-forecast-2024/",
         title: "2024 U.S. presidential election forecast",
-        date: "Nov 2024",
+        date: "Nov 2024 (update: Jun 2025)",
         description: (
             <p>
                 Forecasts, on each day leading up to the 2024 U.S. presidential election, who will win.
@@ -58,36 +58,6 @@ window.projectsData = [
             </p>
         ),
         sameTab: true  // This will open in same tab
-    },
-    {
-        id: 5,
-        thumbnailSrc: "projectthumbnails/mediareliability.png",
-        projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/BiasvReliability/BiasvsReliability",
-        title: "Media bias vs. reliability",
-        date: "Sep 2024",
-        description: (
-            <p>
-                Political bias (left/right) of around 800 news media sources against their reliability ratings,
-                according to Ad Fontes Media.  The data was scraped using Python and plotted using Tableau.
-            </p>
-        )
-        // External Tableau - keep in new tab
-    },
-    {
-        id: 6,
-        thumbnailSrc: "projectthumbnails/polls.png",
-        projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/2024U_S_PresidentialElection_Pollingaveragesovertimeforthe2majorparties/Presentation",
-        title: "2024 U.S. presidential election",
-        date: "Aug 2024",
-        description: (
-            <p>
-                Analyzed over 4,000 polls spanning three years of data from FiveThirtyEight.
-                Daily rolling averages for Donald Trump, Kamala Harris, and Joe Biden, covering the period
-                from April 7, 2021, to August 11, 2024 (periodic updates since then).  Toggle between polling
-                data for likely voters, registered voters, and all voters.
-            </p>
-        )
-        // External Tableau - keep in new tab
     },
     {
         id: 7,
