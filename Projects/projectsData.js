@@ -60,7 +60,7 @@ window.projectsData = [
         sameTab: true  // This will open in same tab
     },
     {
-        id: 5,
+        id: 6,
         thumbnailSrc: "projectthumbnails/polls.png",
         projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/rolling-polling-trends/2024PresidentialRaceMulti-ResolutionPollingAnalysis?publish=yes",
         title: '2024 presidential race: multi-resolution polling analysis',
