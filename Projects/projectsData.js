@@ -1,7 +1,7 @@
 // Projects data using JSX (requires type="text/babel")
 window.projectsData = [
     {
-        id: 6,
+        id: 1,
         thumbnailSrc: "projectthumbnails/polls.png",
         projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/rolling-polling-trends/2024PresidentialRaceMulti-ResolutionPollingAnalysis?publish=yes",
         title: '2024 presidential race: multi-resolution polling analysis',
@@ -14,7 +14,7 @@ window.projectsData = [
         // Tableau - keep in new tab
     },
     {
-        id: 10,
+        id: 2,
         thumbnailSrc: "projectthumbnails/vit.png",
         projectUrl: "https://www.youtube.com/watch?v=n2BLDSyJqew&list=PLVDqIaLqAssM8_EftT-1l4OGmtpLFjeur&ab_channel=AshleyK.Wheeler",
         title: "Virtual inspiring talk",
