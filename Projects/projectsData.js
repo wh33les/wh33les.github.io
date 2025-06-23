@@ -2,7 +2,7 @@
 window.projectsData = [
     {
         id: 1,
-        thumbnailSrc: "projectthumbnails/polls.png",
+        thumbnailSrc: "projectthumbnails/rolling-polling-trends.png",
         projectUrl: "https://public.tableau.com/app/profile/ashley.k.w.warren/viz/rolling-polling-trends/2024PresidentialRaceMulti-ResolutionPollingAnalysis?publish=yes",
         title: '2024 presidential race: multi-resolution polling analysis',
         date: "Aug 2024 (update: Jun 2025)",
