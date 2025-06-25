@@ -7,6 +7,7 @@ const Project = ({
     projectUrl,
     title,
     date,
+    update,
     description,
     sameTab = false,
     isLast = false
@@ -41,6 +42,7 @@ const Project = ({
                             </a>
                             {' '}({date}).
                         </h3>
+                        <p>{update}</p>
                         {description}
                     </td>
                 </tr>
