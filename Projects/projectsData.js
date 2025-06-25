@@ -15,7 +15,7 @@ window.projectsData = [
                 >
                     Kaggle competition to predict housing prices given 79 features.
                 </a>{' '}
-                Ranked in the top 2% out of ~24,000 submissions!
+                Ranked in the <b>top 2% out of ~24,000 submissions!</b>
             </p>
         )
         // No sameTab property = opens in new tab (default)

@@ -23,5 +23,14 @@ img:hover {
     vertical-align: middle;
     padding-top: 10px;
     padding-bottom: 10px;
+}
 
+.project-title {
+    margin-bottom: 4px;
+    /* Reduce bottom margin */
+}
+
+.project-update {
+    margin-top: 0px;
+    /* Reduce top margin */
 }

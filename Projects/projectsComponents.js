@@ -32,22 +32,22 @@ const Project = ({
                         </a>
                     </td>
                     <td>
-                        <h3>
+                        <h3 className="project-title">
                             <a
                                 href={projectUrl}
                                 target={linkTarget}
-                                rel={linkRel}
-                            >
-                                {title}
-                            </a>
-                            {' '}({date}).
+                                rel={linkRel}>
+
+                                {title}</a>
+                            {' '}({date})
                         </h3>
-                        <p>{update}</p>
+                        <p className="project-update">{update}</p>
                         {description}
                     </td>
                 </tr>
-            </table>
-            {!isLast && <hr />}
+            </table >
+            {!isLast && <hr />
+            }
         </>
     );
 };
@@ -63,6 +63,7 @@ const ProjectsList = () => {
                     projectUrl={project.projectUrl}
                     title={project.title}
                     date={project.date}
+                    update={project.update}
                     description={project.description}
                     sameTab={project.sameTab}
                     isLast={index === window.projectsData.length - 1}
