@@ -4,7 +4,7 @@ window.projectsData = [
         id: 3,
         thumbnailSrc: "projectthumbnails/housingprices.png",
         projectUrl: "https://github.com/wh33les/housing-prices-prediction",
-        title: "Housing prices",
+        title: "Housing prices prediction",
         date: "Jan 2025",
         update: (<i>(updated Jun 2025)</i>),
         description: (
@@ -19,6 +19,21 @@ window.projectsData = [
             </p>
         )
         // No sameTab property = opens in new tab (default)
+    },
+    {
+        id: 4,
+        thumbnailSrc: "projectthumbnails/electionforecast.png",
+        projectUrl: "https://wh33les.github.io/us-election-forecast-2024/",
+        title: "2024 U.S. presidential election forecast",
+        date: "Nov 2024",
+        update: (<i>(updated Jul 2025)</i>),
+        description: (
+            <p>
+                Forecasts, on each day leading up to the 2024 U.S. presidential election, who will win.
+                Predictions made using polling data from FiveThirtyEight, along with FiveThirtyEight's polling averages for swing states.
+            </p>
+        ),
+        sameTab: true  // This will open in same tab
     },
     {
         id: 1,
